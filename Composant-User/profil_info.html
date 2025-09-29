@@ -1,0 +1,80 @@
+<!-- profil_info.html -->
+<section class="space-y-6" data-shell-title="Profil — Informations">
+
+    <div class="card p-6">
+      <h2 class="text-3xl font-light text-gray-700">Informations</h2>
+    </div>
+  
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- gauche profil -->
+      <div class="card p-8">
+        <div class="text-gray-500 mb-4">Profil</div>
+        <div class="flex flex-col items-center">
+          <div class="w-36 h-36 rounded-full border-4 border-brand-green overflow-hidden">
+            <img id="profileLarge" src="/img/img2.jpg" alt="avatar" class="w-full h-full object-cover">
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-brand-blue">Faly Seck</h3>
+          <div class="text-sm text-gray-500">Designer</div>
+          <button id="editProfileBtn" class="mt-6 px-6 py-2 bg-brand-blue text-white rounded-md">Editer profil</button>
+        </div>
+      </div>
+  
+      <!-- espace central vide pour alignement (ou autre contenu) -->
+      <div></div>
+  
+      <!-- droite: informations -->
+      <div class="col-span-1 lg:col-span-1">
+        <div class="card overflow-hidden">
+          <div class="p-6">
+            <div class="bg-brand-green text-white px-4 py-2 rounded mb-4 font-medium">Informations Générales</div>
+  
+            <div class="divide-y">
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">Prénom</div>
+                <div class="text-sm">Faly</div>
+              </div>
+  
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">Nom</div>
+                <div class="text-sm">Seck</div>
+              </div>
+  
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">Statut</div>
+                <div class="text-sm">Utilisateur</div>
+              </div>
+  
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">E-mail</div>
+                <div class="text-sm">faly@gmail.com</div>
+              </div>
+            </div>
+  
+            <div class="bg-brand-green text-white px-4 py-2 rounded mt-6 mb-4 font-medium">Statistiques</div>
+  
+            <div class="divide-y">
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">Nombre de Cotisations effectuées</div>
+                <div class="text-sm">7</div>
+              </div>
+              <div class="py-3 flex justify-between items-center">
+                <div class="text-sm text-gray-600">Nombre de cotisations restantes</div>
+                <div class="text-sm">5</div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Petite script demo pour le bouton Edit -->
+    <script>
+      (function () {
+        const btn = document.getElementById('editProfileBtn');
+        btn.addEventListener('click', () => alert('Ouvrir formulaire d\'édition du profil (demo).'));
+      })();
+    </script>
+  
+  </section>
+  

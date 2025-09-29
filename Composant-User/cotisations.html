@@ -1,0 +1,194 @@
+<!-- cotisations.html -->
+<section class="space-y-6" data-shell-title="Cotisations">
+
+    <!-- Top header + CTA -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-extrabold">Cotisations</h2>
+        <p class="text-sm text-gray-500">Suivi des versements et gestion des cotisations.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="btnNewCotise" class="px-4 py-2 bg-brand-blue text-white rounded-md shadow-sm">Je cotise</button>
+        <button id="btnExport" class="px-4 py-2 border rounded-md text-sm">Exporter</button>
+      </div>
+    </div>
+  
+    <!-- KPI cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="card p-5 relative overflow-visible">
+        <div class="absolute -top-3 left-5 bg-brand-green rounded-tl-md rounded-tr-md px-3 py-1 text-white text-xs font-semibold">Total Cotisé</div>
+        <div class="pt-4">
+          <div class="text-gray-500 text-sm">Total Cotisé</div>
+          <div class="text-2xl font-bold mt-2">100.000 FCFA</div>
+          <div class="text-xs text-gray-400 mt-1">Nombre de cotisations: 04</div>
+        </div>
+      </div>
+  
+      <div class="card p-5 relative overflow-visible">
+        <div class="absolute -top-3 left-5 bg-brand-green rounded-tl-md rounded-tr-md px-3 py-1 text-white text-xs font-semibold">Montant Restant</div>
+        <div class="pt-4">
+          <div class="text-gray-500 text-sm">Montant Restant</div>
+          <div class="text-2xl font-bold mt-2">200.000 FCFA</div>
+          <div class="text-xs text-gray-400 mt-1">Nombre de cotisations restantes: 08</div>
+        </div>
+      </div>
+  
+      <div class="card p-5">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-sm text-gray-500">Caisse</div>
+            <div class="text-lg font-semibold mt-1">100.000 FCFA / 300.000 FCFA</div>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center">💰</div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 mt-4 overflow-hidden">
+          <div class="h-2 bg-brand-green" style="width:33%"></div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Table card -->
+    <div class="card overflow-hidden">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Historique des cotisations</h3>
+  
+        <!-- table header band (green) -->
+        <div class="mx-auto max-w-full">
+          <div class="bg-brand-green text-white rounded-t-md px-4 py-2 font-medium text-sm">
+            <div class="grid grid-cols-5 gap-4 items-center">
+              <div>Mois</div>
+              <div>Date</div>
+              <div>Montant</div>
+              <div>Statut</div>
+              <div class="text-right">Actions</div>
+            </div>
+          </div>
+  
+          <!-- table body -->
+          <div class="p-4 bg-white">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-separate" style="border-spacing: 0 10px;">
+                <tbody id="cotisationsTbody">
+                  <!-- exemple statique -->
+                  <tr class="bg-white">
+                    <td class="p-3">Janvier</td>
+                    <td class="p-3 text-gray-500">01-01-2022</td>
+                    <td class="p-3">25.000 FCFA</td>
+                    <td class="p-3 text-green-600 font-medium">Validé</td>
+                    <td class="p-3 text-right">
+                      <button class="btn-view text-gray-600 px-2" data-id="1" title="Voir"><i class="bi bi-eye"></i></button>
+                      <button class="btn-edit text-gray-600 px-2" data-id="1" title="Éditer"><i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+  
+        <!-- pagination -->
+        <div class="mt-6 flex items-center justify-center gap-3 text-sm text-gray-600">
+          <button id="prevPage" class="px-3 py-1 rounded border">Previous</button>
+          <nav class="flex items-center gap-2">
+            <button class="page-btn w-8 h-8 rounded-full bg-brand-green text-white">1</button>
+            <button class="page-btn w-8 h-8 rounded-full border">2</button>
+          </nav>
+          <button id="nextPage" class="px-3 py-1 rounded border">Next</button>
+        </div>
+  
+      </div>
+    </div>
+  
+    <!-- ---------------------------------------------------
+         MODAL "Je cotise" (wrapper CORRIGÉ : flex centré)
+         --------------------------------------------------- -->
+    <div id="cotiseModal" class="fixed inset-0 z-50 hidden flex items-center justify-center">
+      <!-- overlay -->
+      <div id="cotiseOverlay" class="absolute inset-0 bg-black/40"></div>
+  
+      <!-- modal card -->
+      <div class="relative w-full max-w-md mx-4">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+          <div class="pt-10 pb-6 px-6 text-center">
+            <div class="mx-auto -mt-26 w-32 h-32 rounded-full border-4 border-brand-green overflow-hidden flex items-center justify-center bg-white">
+              <img id="modalAvatar" src="/img/img2.jpg" alt="avatar" class="w-28 h-28 rounded-full object-cover">
+            </div>
+  
+            <h3 class="mt-3 text-xl font-semibold text-brand-blue">Faly Seck</h3>
+            <p class="text-gray-500 mt-2">Ajouter une cotisation</p>
+  
+            <form id="cotiseForm" class="mt-6 space-y-4">
+              <div class="relative">
+                <input id="cotiseDate" name="date" type="date" required class="w-full border rounded-md px-4 py-3 pr-12 text-sm" />
+                <span class="absolute right-3 top-3 text-gray-400"><i class="bi bi-calendar-event"></i></span>
+              </div>
+  
+              <div>
+                <input id="cotiseMontant" name="montant" type="number" min="0" placeholder="Montant (FCFA)" required class="w-full border rounded-md px-4 py-3 text-sm" />
+              </div>
+  
+              <div class="pt-3">
+                <button type="submit" class="mx-auto block px-6 py-3 bg-brand-blue text-white rounded-md shadow-md">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+  
+          <button id="closeCotiseSmall" class="absolute top-3 right-3 text-gray-400"><i class="bi bi-x-lg"></i></button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Script: modal centré + ajout ligne demo -->
+    <script>
+      (function () {
+        const btnNew = document.getElementById('btnNewCotise');
+        const modal = document.getElementById('cotiseModal');
+        const overlay = document.getElementById('cotiseOverlay');
+        const closeSmall = document.getElementById('closeCotiseSmall');
+        const form = document.getElementById('cotiseForm');
+        const tbody = document.getElementById('cotisationsTbody');
+  
+        function openModal() {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => document.getElementById('cotiseDate').focus(), 60);
+        }
+        function closeModal() {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+  
+        if (btnNew) btnNew.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+        overlay.addEventListener('click', closeModal);
+        closeSmall.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+  
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const dateVal = document.getElementById('cotiseDate').value;
+          const montantVal = document.getElementById('cotiseMontant').value;
+          if (!dateVal || !montantVal) { alert('Remplissez la date et le montant.'); return; }
+          const d = new Date(dateVal);
+          const mois = d.toLocaleString('fr-FR', { month: 'long' });
+          const dateFormatted = d.toLocaleDateString('fr-FR');
+          const tr = document.createElement('tr');
+          tr.className = 'bg-white';
+          tr.innerHTML = `
+            <td class="p-3">${mois.charAt(0).toUpperCase() + mois.slice(1)}</td>
+            <td class="p-3 text-gray-500">${dateFormatted}</td>
+            <td class="p-3">${Number(montantVal).toLocaleString('fr-FR')} FCFA</td>
+            <td class="p-3 text-green-600 font-medium">Validé</td>
+            <td class="p-3 text-right">
+              <button class="text-gray-600 px-2" title="Voir"><i class="bi bi-eye"></i></button>
+              <button class="text-gray-600 px-2" title="Éditer"><i class="bi bi-pencil-square"></i></button>
+            </td>
+          `;
+          tbody.insertBefore(tr, tbody.firstChild);
+          form.reset();
+          closeModal();
+        });
+      })();
+    </script>
+  
+  </section>
+  

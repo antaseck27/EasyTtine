@@ -1,0 +1,77 @@
+<!-- profil_pass.html -->
+<section class="space-y-6" data-shell-title="Profil — Changer mot de passe">
+
+    <div class="card p-6">
+      <h2 class="text-3xl font-light text-gray-700">Changer mot de passe</h2>
+    </div>
+  
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- gauche: profil identique -->
+      <div class="card p-8">
+        <div class="text-gray-500 mb-4">Profil</div>
+        <div class="flex flex-col items-center">
+          <div class="w-36 h-36 rounded-full border-4 border-brand-green overflow-hidden relative">
+            <img id="profileLarge2" src="/img/img2.jpg" alt="avatar" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 right-0 transform translate-x-1/4 translate-y-1/4">
+              <div class="w-8 h-8 rounded-full bg-brand-green flex items-center justify-center text-white text-sm border-2 border-white">
+                <i class="bi bi-camera-fill"></i>
+              </div>
+            </div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-brand-blue">Faly Seck</h3>
+          <div class="text-sm text-gray-500">Designer</div>
+        </div>
+      </div>
+  
+      <div></div>
+  
+      <!-- droite: formulaire -->
+      <div class="col-span-1 lg:col-span-1">
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold mb-4">Modifier votre mot de passe</h3>
+  
+          <form id="changePwdForm" class="space-y-4 max-w-lg">
+            <div>
+              <label class="block text-sm text-gray-600 mb-1">Actuel mot de passe</label>
+              <input name="current" type="password" class="w-full border rounded px-3 py-2" required>
+            </div>
+  
+            <div>
+              <label class="block text-sm text-gray-600 mb-1">Nouveau mot de passe</label>
+              <input name="newpass" type="password" class="w-full border rounded px-3 py-2" required minlength="6">
+            </div>
+  
+            <div>
+              <label class="block text-sm text-gray-600 mb-1">Confirmer nouveau mot de passe</label>
+              <input name="confirm" type="password" class="w-full border rounded px-3 py-2" required>
+            </div>
+  
+            <div class="flex justify-end">
+              <button type="submit" class="px-4 py-2 bg-brand-blue text-white rounded-md">Mettre à jour</button>
+            </div>
+          </form>
+  
+        </div>
+      </div>
+  
+    </div>
+  
+    <script>
+      (function () {
+        const form = document.getElementById('changePwdForm');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          if (fd.get('newpass') !== fd.get('confirm')) {
+            alert('Les nouveaux mots de passe ne correspondent pas.');
+            return;
+          }
+          // Ici brancher Firebase Auth ou API pour changer le password
+          alert('Mot de passe mis à jour (demo).');
+          form.reset();
+        });
+      })();
+    </script>
+  
+  </section>
+  

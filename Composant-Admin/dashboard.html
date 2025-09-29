@@ -1,0 +1,211 @@
+les graphique s'affiche pas <!-- dashboard.html -->
+<section class="space-y-6" data-shell-title="ADMIN Dashboard">
+
+    <!-- Top : titre visible dans le contenu (optionnel) -->
+    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-semibold">Tableau de bord</h2>
+        <p class="text-sm text-gray-600">Vue d'ensemble des cotisations, membres et activité récente.</p>
+      </div>
+  
+      <div class="flex items-center gap-3">
+        <button class="px-3 py-2 bg-brand-green text-white rounded text-sm">Nouvelle cotisation</button>
+        <button class="px-3 py-2 border rounded text-sm">Exporter</button>
+      </div>
+    </header>
+  
+    <!-- Cards résumé (responsive) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="card p-4">
+        <div class="text-sm text-gray-500">Revenu ce mois</div>
+        <div class="text-2xl font-bold mt-2">225 000 FCFA</div>
+        <div class="text-xs text-gray-500 mt-1">Cotisations: 27</div>
+      </div>
+  
+      <div class="card p-4">
+        <div class="text-sm text-gray-500">Membres actifs</div>
+        <div class="text-2xl font-bold mt-2">1 240</div>
+        <div class="text-xs text-gray-500 mt-1">Enregistrés ce trimestre: 78</div>
+      </div>
+  
+      <div class="card p-4">
+        <div class="text-sm text-gray-500">Taux de complétion</div>
+        <div class="text-2xl font-bold mt-2">72%</div>
+        <div class="text-xs text-gray-500 mt-1">Objectif: 85%</div>
+        <div class="w-full bg-gray-200 rounded-full h-2 mt-3 overflow-hidden">
+          <div class="h-2 bg-brand-green" style="width:72%"></div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Graphiques (responsive) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card p-4">
+        <div class="flex items-center justify-between mb-3">
+          <div class="font-semibold">Evolution des cotisations</div>
+          <div class="text-xs text-gray-500">Derniers 7 mois</div>
+        </div>
+        <div style="height:280px;">
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+  
+      <div class="card p-4">
+        <div class="flex items-center justify-between mb-3">
+          <div class="font-semibold">Répartition des statuts</div>
+          <div class="text-xs text-gray-500">Terminé / En cours / Archivé / Bloqué</div>
+        </div>
+        <div class="flex gap-4 items-center">
+          <div style="width:200px; height:200px;">
+            <canvas id="doughnutChart"></canvas>
+          </div>
+          <div class="flex-1">
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3">
+                <span class="w-3 h-3 bg-brand-green rounded"></span><span>Terminé — 18%</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-3 h-3 bg-brand-blue rounded"></span><span>En cours — 49%</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-3 h-3 bg-pink-300 rounded"></span><span>Archivé — 23%</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-3 h-3 bg-amber-300 rounded"></span><span>Bloqué — 9%</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Activité récente + Table responsive -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card p-4">
+        <h3 class="font-semibold mb-3">Activité récente</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <div class="text-xl">🟢</div>
+            <div>
+              <div class="text-sm font-medium">Paiement reçu — Selena Roy</div>
+              <div class="text-xs text-gray-500">Il y a 2 heures</div>
+            </div>
+          </li>
+  
+          <li class="flex items-start gap-3">
+            <div class="text-xl">🔔</div>
+            <div>
+              <div class="text-sm font-medium">Nouvelle cotisation créée: Tontine Mensuelle</div>
+              <div class="text-xs text-gray-500">Hier</div>
+            </div>
+          </li>
+  
+          <li class="flex items-start gap-3">
+            <div class="text-xl">⛔</div>
+            <div>
+              <div class="text-sm font-medium">Membre bloqué — Mamadou Diallo</div>
+              <div class="text-xs text-gray-500">2 jours</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+  
+      <div class="card p-4">
+        <h3 class="font-semibold mb-3">Dernières cotisations</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="p-3 text-sm">Titre</th>
+                <th class="p-3 text-sm">Montant</th>
+                <th class="p-3 text-sm">Date</th>
+                <th class="p-3 text-sm">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="p-3">Tontine mensuelle</td>
+                <td class="p-3">25 000 FCFA</td>
+                <td class="p-3">01-09-2025</td>
+                <td class="p-3 text-blue-700">En cours</td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-3">Epargne groupée</td>
+                <td class="p-3">50 000 FCFA</td>
+                <td class="p-3">01-08-2025</td>
+                <td class="p-3 text-green-600">Terminé</td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-3">Solidarité spéciale</td>
+                <td class="p-3">10 000 FCFA</td>
+                <td class="p-3">25-07-2025</td>
+                <td class="p-3 text-yellow-600">Archivé</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+  
+  <!-- Chart.js CDN (sera exécuté lors de l'injection) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Initialisation des charts -->
+  <script>
+    (function () {
+      // safe: attendre que les canvas soient dans le DOM (injection faite)
+      // Ligne des cotisations
+      const lineCtxEl = document.getElementById('lineChart');
+      if (lineCtxEl) {
+        const lineCtx = lineCtxEl.getContext('2d');
+        new Chart(lineCtx, {
+          type: 'line',
+          data: {
+            labels: ['Mars','Avr','Mai','Juin','Juil','Août','Sept'],
+            datasets: [{
+              label: 'Cotisations',
+              data: [20, 35, 28, 45, 50, 62, 55],
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16,185,129,0.08)',
+              tension: 0.35,
+              pointRadius: 4,
+              pointBackgroundColor: '#08303a'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, max: 80, ticks: { stepSize: 20 } }
+            }
+          }
+        });
+      }
+  
+      // Doughnut
+      const doughEl = document.getElementById('doughnutChart');
+      if (doughEl) {
+        const doughCtx = doughEl.getContext('2d');
+        new Chart(doughCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['En cours','Archivé','Bloqué','Terminé'],
+            datasets: [{
+              data: [49, 23, 9, 19],
+              backgroundColor: ['#08303a','#fca5a5','#fcd34d','#10b981']
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '60%'
+          }
+        });
+      }
+    })();
+  </script>
+  
