@@ -1,1 +1,46 @@
-<div>Salut Idriss</div>
+<section class="sectionArchives w-full">
+  <!-- Titre -->
+  <div class="p-5"><h2 class="text-2xl font-bold">Archives</h2></div>
+
+  <h4 class="text-center text-lg font-semibold">10 Membres Archivés</h4>
+
+  <!-- Tableau -->
+  <div class="overflow-x-auto mt-3 p-5">
+    <table class="w-1/2 m-auto">
+      <thead class="bg-green-400">
+        <tr>
+          <th class="px-4 py-2 font-semibold">Membres</th>
+          <th class="px-4 py-2 font-semibold">Date début</th>
+          <th class="px-4 py-2 font-semibold">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tBody">
+        <style>
+          td{
+            border-bottom: 1px solid gainsboro;
+            padding: 1% 1% 1% 10%;
+          }
+          .bi-archive{
+            color: rgb(4, 181, 4);
+            padding-left: 2%;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-weight: bold;
+          }
+        </style>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center items-center gap-3 mt-5 pb-5">
+    <a href="#" class="text-gray-500 hover:underline">Previous page</a>
+    <div class="flex gap-2">
+      <span class="bg-green-500 text-white rounded-full px-3 py-1">1</span>
+      <span class="px-3 py-1">2</span>
+    </div>
+    <a href="#" id="nextPage" class="text-gray-800 font-semibold hover:underline">Next page</a>
+  </div>
+</section>
+
+<script  src="paraArchive.js"></script>
