@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnConnexion.addEventListener("click", (e) => {
     e.preventDefault();
     // Si tout est correct -> redirection
-      window.location.href = "accueil.html"; 
+      window.location.href = "Composant-Admin/index1.html";
 
      
   });
@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     section1.style.display = "none";
     section2.style.display = "block";
+
   });
 
   inscrivezVous.addEventListener("click", (e) => {
@@ -35,6 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     section1.style.display = "none";
     section2.style.display = "none";
     section3.style.display = "block";
+
+    window.location.href = "Composant-Admin/index1.html";
+
+
   });
 
  
