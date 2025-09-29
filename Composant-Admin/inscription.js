@@ -6,14 +6,16 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebas
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyD1gEj4mV2hRaJImHW1IsyQjZ1uEusY-bM",
-    authDomain: "tontine-bakeli.firebaseapp.com",
-    projectId: "tontine-bakeli",
-    storageBucket: "tontine-bakeli.appspot.com",
-    messagingSenderId: "542050089083",
-    appId: "1:542050089083:web:41426bb7f5c41c496acade"
+ 
+
+   // Your web app's Firebase configuration
+   const firebaseConfig = {
+    apiKey: "AIzaSyAQQa-v3Zg-HNwKoNDiTGYrfyXX7SnIiGM",
+    authDomain: "tontine-easy.firebaseapp.com",
+    projectId: "tontine-easy",
+    storageBucket: "tontine-easy.firebasestorage.app",
+    messagingSenderId: "138013449509",
+    appId: "1:138013449509:web:a7e8b5462449f77e7f8ecc"
   };
 
   // Initialisation Firebase
