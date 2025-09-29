@@ -19,17 +19,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://cdn.tailwindcss.com"></script>
     <title>login</title>
-</head>
-<body style="color: rgba(3, 33, 51, 0.927); height: 100%;">
+</head> 
+    <style>
+      body{
+        color: rgba(3, 33, 51, 0.927);
+      }
+        @media screen and (max-width: 770px) {
+              .section-1 .bloc-gauche, .section-2 .bloc-gauche, .section-3 .bloc-gauche{
+                 display: none;
+               }
+              
+        }
+    </style>
+<body>
 
 
 <!-- mon section 1 -->
-<section class="section-1" style="height:">
+<section class="section-1" style="height: 100vh;">
      <div class="flex flex-col lg:flex-row items-center justify-center text-center">
     
 <!-- Bloc gauche -->
-      <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center  p-20" style="height: ; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
-        <img src="img/Group 1597.png" alt="" style="height: 55%; margin-top: 2%;">
+      <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center  p-20 bloc-gauche" style="height: 100vh; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+        <img src="img/Group 1597.png" alt="" style="height: 75%; margin-top: 10%;">
       </div>
 
 <!-- Bloc droit -->
@@ -52,7 +63,7 @@
         
 
 <!-- Mot de passe oublié -->
-          <p class="text-right ml-44 text-sm font-medium" id="mot2passe"><a href="#">Mot de passe oublié?</a> </p>
+          <p class="text-sm font-medium" id="mot2passe"><a href="#">Mot de passe oublié?</a> </p>
        
 
 <!-- Bouton connexion -->
@@ -78,7 +89,7 @@
       <div class="flex flex-col md:flex-row items-center">
         
 <!-- Colonne gauche avec l'image -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center mb-6 md:mb-0 bg-blue-950 p-20" style="height: 600px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+        <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center mb-6 md:mb-0 bg-blue-950 p-20 bloc-gauche" style="height: 600px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
           <img src="image/Group 7.png" alt="" style="height: 75%; margin-top: 10%;">
         </div>
 
@@ -113,7 +124,7 @@
     <div class="flex flex-col lg:flex-row items-center gap-10" style="height: 600px;">
         
 <!-- Colonne gauche avec l'image -->
-        <div class="w-full md:w-5/12 lg:w-1/3 flex justify-center" style="height: 700px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+        <div class="w-full md:w-5/12 lg:w-1/3 flex justify-center bloc-gauche" style="height: 700px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
           <img src="image/Sign up-pana 1.png" alt="" style="height: 55%; margin-top: 25%;">
         </div>
 
@@ -173,6 +184,7 @@
 
 <!-- ........................()........................... -->
             <!-- modal mot de passe oublié -->
+
 <div >
     <div style="width: 35%; background-color: white; position: absolute; top: 18%; left: 47%; display: none;"
      class="shadow-xl border" id="modal">
