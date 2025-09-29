@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+  
+  <!-- Illustration -->
+  <div class="hidden md:flex md:w-1/3 justify-center items-center bg-[#224957] text-white rounded-tr-[15%] rounded-br-[15%]">
+    <img src="/img/Group 7.png" alt="Illustration" class="max-w-full h-auto">
+  </div>
+  
+  <!-- Formulaire -->
+  <div class="w-full md:w-2/3 flex items-center justify-center p-6">
+    <div class="w-full max-w-4xl p-6 shadow-none">
+      <h2 class="text-center text-3xl font-bold text-gray-800 mb-6">Inscription</h2>
+
+      <form id="inscriptionForm" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Nom -->
+          <div>
+            <label for="nom" class="block text-gray-900 font-semibold text-lg">Nom</label>
+            <input type="text" id="nom" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Prénom -->
+          <div>
+            <label for="prenom" class="block text-gray-900 font-semibold text-lg">Prénom</label>
+            <input type="text" id="prenom" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Date -->
+          <div>
+            <label for="dateNaissance" class="block text-gray-900 font-semibold text-lg">Date</label>
+            <input type="date" id="dateNaissance" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Profession -->
+          <div>
+            <label for="profession" class="block text-gray-900 font-semibold text-lg">Profession</label>
+            <input type="text" id="profession" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Définir mot de passe -->
+          <div>
+            <label for="password" class="block text-gray-900 font-semibold text-lg">Définir mot de passe</label>
+            <input type="password" id="password" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Confirmer mot de passe -->
+          <div>
+            <label for="confirmPassword" class="block text-gray-900 font-semibold text-lg">Confirmer mot de passe</label>
+            <input type="password" id="confirmPassword" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-gray-900 font-semibold text-lg">E-mail</label>
+            <input type="email" id="email" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Téléphone -->
+          <div>
+            <label for="telephone" class="block text-gray-900 font-semibold text-lg">Téléphone</label>
+            <input type="tel" id="telephone" required
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Adresse -->
+          <div>
+            <label for="adresse" class="block text-gray-900 font-semibold text-lg">Adresse</label>
+            <input type="text" id="adresse"
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+
+          <!-- Rôle -->
+          <div>
+            <label for="role" class="block text-gray-900 font-semibold text-lg">Rôle</label>
+            <input type="text" id="role"
+              class="w-full border-2 border-[#2e5563] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#28c76f]">
+          </div>
+        </div>
+
+        <!-- Bouton -->
+        <div class="flex justify-center mt-6">
+          <button type="submit"
+            class="w-1/2 py-3 rounded-xl font-bold text-lg bg-[#28c76f] text-[#2e5563] shadow-md hover:bg-[#20b463] hover:text-white transition">
+            S’inscrire
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/Admin/inscript.js"></script>
+</body>
+</html>

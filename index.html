@@ -12,3 +12,195 @@
     <script type="module" src="main.js"></script>
 </body>
 </html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+    <title>login</title>
+</head>
+<body style="color: rgba(3, 33, 51, 0.927); height: 100%;">
+
+
+<!-- mon section 1 -->
+<section class="section-1" style="height:">
+     <div class="flex flex-col lg:flex-row items-center justify-center text-center">
+    
+<!-- Bloc gauche -->
+      <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center  p-20" style="height: ; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+        <img src="img/Group 1597.png" alt="" style="height: 55%; margin-top: 2%;">
+      </div>
+
+<!-- Bloc droit -->
+      <div class=" md:w-1/2 lg:w-2/3 mt-5">
+        <div class="flex flex-col items-center gap-4">
+          <h1 class="text-5xl font-bold">Bienvenue sur Bakéli-tontine</h1>
+          <h3 class="text-2xl font-semibold mt-10">Connectez-vous</h3>
+          <p class="font-medium">Connectez-vous et gérez vos cotisations</p>
+
+ <!-- Input Téléphone -->
+          <input type="tel" placeholder="N° Téléphone" id="inputTéléphone"  required
+            class="rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-950  text-white"
+            style="background-color: rgba(3, 33, 51, 0.927); width: 40%;">
+        
+
+<!-- Input Mot de passe -->
+          <input type="password" placeholder="Mot de passe" id="inputMot2passe" required
+            class="rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-950 text-white"
+            style="background-color: rgba(3, 33, 51, 0.927); width: 40%;">
+        
+
+<!-- Mot de passe oublié -->
+          <p class="text-right ml-44 text-sm font-medium" id="mot2passe"><a href="#">Mot de passe oublié?</a> </p>
+       
+
+<!-- Bouton connexion -->
+          <button  id="btnConnexion" style="width: 40%;" class="bg-green-500 hover:bg-green-600 px-8 py-2 rounded-lg shadow-md transition font-bold">
+            <a href="#">Connexion</a>
+          </button>
+
+<!-- Inscription -->
+          <p class="text-sm">Vous n'avez pas de compte, 
+            <strong id="inscrivezVous">  <a href="#" class="text-blue-950">inscrivez-vous!</a> </strong>
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<!-- ........................()........................... -->
+             <!-- section mot de passe oublié -->
+
+
+<section class="section-2" style="height: 600px; display: none;">
+      <div class="flex flex-col md:flex-row items-center">
+        
+<!-- Colonne gauche avec l'image -->
+        <div class="w-full md:w-1/2 lg:w-1/3 flex justify-center mb-6 md:mb-0 bg-blue-950 p-20" style="height: 600px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+          <img src="image/Group 7.png" alt="" style="height: 75%; margin-top: 10%;">
+        </div>
+
+<!-- Colonne droite avec le formulaire -->
+        <div class="shadow-md  border-2 p-20" style="width: 40%; margin: auto;">
+            <h3 class="text-2xl font-semibold">Mot de passe oublié</h3>
+            <p class="mt-4 text-gray-600">Pour réinitialiser votre mot de passe entrez votre e-mail ou votre numéro de téléphone.</p>
+
+            <div class="mt-5">
+              <input type="text" id="telEmail" placeholder="N° téléphone ou E-mail"
+                class="w-full rounded-lg px-4 py-2 focus:outline-none focus:ring-2  text-white"
+                style="background-color: rgba(3, 33, 51, 0.927);">
+            </div>
+
+<!-- Bouton envoie nouveau mot de passe -->
+            <div class="text-right mt-4">
+              <button id="btnEnvoyer" 
+                class="bg-green-500 text-blue-950 px-6 py-2 rounded-lg hover:bg-green-600 transition shadow-md font-bold"> Envoyer
+              </button>
+            </div>
+        </div>
+      </div>
+</section>
+
+
+
+<!-- ........................()........................... -->
+               <!-- section inscrivez-vous -->
+
+
+<section class="section-3 py-10" style="display: none;">
+    <div class="flex flex-col lg:flex-row items-center gap-10" style="height: 600px;">
+        
+<!-- Colonne gauche avec l'image -->
+        <div class="w-full md:w-5/12 lg:w-1/3 flex justify-center" style="height: 700px; border-radius: 0 20% 20% 0; background-color: rgba(3, 33, 51, 0.927);">
+          <img src="image/Sign up-pana 1.png" alt="" style="height: 55%; margin-top: 25%;">
+        </div>
+
+<!-- Colonne droite avec le formulaire -->
+        <div  style="width: 45%; margin: auto;">
+          <h2 class="text-center mb-6 text-3xl font-bold text-gray-800">Inscription</h2>
+          
+          <div class="flex flex-col md:flex-row justify-center gap-8">  
+              <!-- Colonne gauche du formulaire -->
+              <div class="flex flex-col gap-4 w-full md:w-1/2">
+                <label for="inputNom" class="font-medium">Nom</label>
+                <input type="text" id="inputNom" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputNaissance" class="font-medium">Date de naissance</label>
+                <input type="date" id="inputNaissance" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputDmot2passe" class="font-medium">Définir mot de passe</label>
+                <input type="password" id="inputDmot2passe" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputMail" class="font-medium">E-mail</label>
+                <input type="email" id="inputMail" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputAdresse" class="font-medium">Adresse</label>
+                <input type="text" id="inputAdresse" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+              </div>
+
+              <!-- Colonne droite du formulaire -->
+              <div class="flex flex-col gap-4 w-full md:w-1/2">
+                <label for="inputPrenom" class="font-medium">Prénom</label>
+                <input type="text" id="inputPrenom" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputProfession" class="font-medium">Profession</label>
+                <input type="text" id="inputProfession" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputCmot2passe" class="font-medium">Confirmer mot de passe</label>
+                <input type="password" id="inputCmot2passe" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputTelephone" class="font-medium">Téléphone</label>
+                <input type="text" id="inputTelephone" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+
+                <label for="inputOrganisation" class="font-medium">Organisation</label>
+                <input type="text" id="inputOrganisation" class="w-full border border-black rounded-md px-4 py-2 focus:outline-none h-9" required>
+              </div>
+
+          </div>
+<!-- Bouton et lien connexion -->
+          <div class="mt-8 text-center">
+            <button id="inscrire" 
+              class="bg-green-500  px-8 py-3 rounded-lg hover:bg-green-600 transition shadow-md font-bold text-blue-950">S'inscrire
+            </button>
+            <p class="mt-4 text-gray-600"> Vous avez déjà un compte ?  <strong> <a href="#" id="connecteVous">inscrivez-vous !</a></strong></p>
+          </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ........................()........................... -->
+            <!-- modal mot de passe oublié -->
+<div >
+    <div style="width: 35%; background-color: white; position: absolute; top: 18%; left: 47%; display: none;"
+     class="shadow-xl border" id="modal">
+    <!-- header -->
+        <div class="border-b px-6 py-4">
+          <h3 class="text-xl font-semibold text-gray-800">E-mail envoyé</h3>
+        </div>
+        
+        <!-- body -->
+        <p class="p-6 text-center text-gray-600">
+          Nous avons envoyé un e-mail à a*****9@gmail.com
+          avec un lien pour réinitialiser votre mot de passe
+        </p>
+        
+        <!-- footer -->
+        <div class="text-center pb-6">
+          <button  id="btnOk"
+            class="bg-green-500 font-bold  px-6 py-2 rounded-lg hover:bg-green-600 transition">Ok
+          </button>
+        </div>
+      </div>
+</div>
+
+
+<script src="login.js"></script>
+<script src="mot2passe.js"></script>
+<script src="inscrire.js"></script>
+
+</body>
+</html>
+
