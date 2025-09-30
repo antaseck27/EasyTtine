@@ -90,8 +90,9 @@
           <div id="sidebarParamPanel" class="mt-1 ml-2 mr-2 rounded hidden">
             <ul class="space-y-1">
               <li><button data-file="param_general.html" data-key="param_general" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Paramètre général</button></li>
-              <li><button data-file="param_bloque.html" data-key="param_bloque" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Membre bloqué</button></li>
+              <li><button data-file="param_user.html" data-key="param_archive" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Utilisateurs</button></li>
               <li><button data-file="param_archive.html" data-key="param_archive" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Archive</button></li>
+              <li><button data-file="param_bloque.html" data-key="param_bloque" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Membre bloqué</button></li>
             </ul>
           </div>
         </li>
@@ -147,12 +148,14 @@
           <div class="p-3 border-b"><div class="font-semibold">Ndiaga SALL</div><div class="text-xs text-gray-500">Admin</div></div>
           <div class="p-2">
             <button id="openChangePass" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Changer le mot de passe</button>
-            <button id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600">Se déconnecter</button>
+            <!-- <button id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" >Se déconnecter</button> -->
+            <a id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" href="/index.html">Se Deconnecter</a>
           </div>
         </div>
       </div>
     </div>
   </header>
+ 
 
   <!-- ZONE PRINCIPALE -->
   <main id="mainContent" class="pt-20 md:pt-20 ml-0 md:ml-64 px-4 md:px-8 pb-16">
@@ -394,6 +397,11 @@
     if (logoutBtn) logoutBtn.addEventListener('click', () => { if (!confirm('Déconnexion ?')) return; alert('Déconnecté (demo).'); });
 
   })();
+
+
+
+
+
   </script>
 
   <!-- NOTE: Conserve dashboard.html, utilisateurs.html, cotisations.html et fichiers param_* à la racine. -->
