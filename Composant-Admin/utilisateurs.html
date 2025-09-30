@@ -1,1 +1,301 @@
-<div>Salut Colle</div>
+
+<body>
+  <!-- Container -->
+  <div class="w-[950px] mx-auto pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card Membres Actifs -->
+      <div class="card bg-[#20DF7F] text-[#FFFFFF] shadow-lg rounded-2xl p-6 
+                  transition duration-200 ease-in-out cursor-pointer group"
+           data-card="actifs">
+        <h2 class="text-lg font-semibold">Membres Actifs</h2>
+        <p class="text-3xl font-bold mt-4">15</p>
+      </div>
+
+      <!-- Card Membres Bloqués -->
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 
+                  transition duration-200 ease-in-out cursor-pointer group"
+           data-card="bloques">
+        <h2 class="text-lg font-semibold">Membres Bloqués</h2>
+        <p class="text-3xl font-bold mt-4">5</p>
+      </div>
+
+      <!-- Card Total Effectif -->
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 
+                  transition duration-200 ease-in-out cursor-pointer group"
+           data-card="total">
+        <h2 class="text-lg font-semibold">Total Effectif</h2>
+        <p class="text-3xl font-bold mt-4">20</p>
+      </div>
+
+    </div>
+  </div>
+ <!-- bouton ajouter membre -->
+  <div class="flex justify-end mt-6 mb-6 me-24 ">
+    <button id="openModal" 
+      class="bg-[#093545] text-white px-6  w-[200px] py-2 rounded-lg shadow  transition">
+     Ajouter
+    </button>
+  </div>
+
+
+  <!-- Bouton Fermer -->
+    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+   
+ <!-- Modal -->
+   
+ <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-2xl w-full max-w-[700px] p-8 relative">
+
+   
+    <form id="formMembre" class="space-y-6 w-full">
+         <h1 class="flex justify-center text-lg">Ajouter un membre</h1>
+      <!-- Ligne 1 : Prénom et Nom -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Nom" class="w-full border border-gray-300 rounded px-3 py-2" required />
+        <input type="text" placeholder="Prenom" class="w-full border border-gray-300 rounded px-3 py-2" required />
+      </div>
+
+      <!-- Ligne 2 : Date de naissance et Email -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="date" placeholder="Date de naissance" class="w-full border border-gray-300 rounded px-3 py-2" required />
+        <input type="text" placeholder="Profession" class="w-full border border-gray-300 rounded px-3 py-2" required />
+      </div>
+
+      <!-- Ligne 3 : Adresse et Organisme -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="email" placeholder="Email" class="w-full border border-gray-300 rounded px-3 py-2" />
+        <input type="number" placeholder="Telephone" class="w-full border border-gray-300 rounded px-3 py-2" />
+      </div>
+
+      <!-- Ligne 4 : Fonction -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+       <input type="text" placeholder="Adresse" class="w-full border border-gray-300 rounded px-3 py-2" />
+        <input type="text" placeholder="Role" class="w-full border border-gray-300 rounded px-3 py-2" />
+      </div>
+
+      <!-- Bouton Enregistrer -->
+      <div class="mt-6">
+        <button type="submit" class="bg-green-600 text-white w-full py-3 rounded hover:bg-green-700 transition">
+          Enregistrer
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+  <!-- tableau vide -->
+  <div class=" w-full max-w-[1100px] mx-auto mt-8 shadow rounded-lg overflow-x-auto">
+  <table class="min-w-full rounded-lg bg-[#FFFFFF]">
+    <thead class="bg-[#20DF7F]">
+      <tr class="h-16 w-100">
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Nom</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Date de début</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Seuil</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Progression</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Statut</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Action</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <!-- Les lignes seront ajoutées dynamiquement ici -->
+    </tbody>
+  </table>
+</div>
+
+
+
+<script type="module">
+ // ----------------------------
+// CARDS SURVOL
+// ----------------------------
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    cards.forEach(c => {
+      if(c !== card) {
+        // Remettre les autres cartes à blanc
+        c.classList.remove('bg-[#20DF7F]', 'text-[#FFFFFF]');
+        c.classList.add('bg-[#FFFFFF]', 'text-[#093545]');
+      }
+    });
+
+    // Activer la carte survolée
+    card.classList.remove('bg-[#FFFFFF]', 'text-[#093545]');
+    card.classList.add('bg-[#20DF7F]', 'text-[#FFFFFF]');
+  });
+});
+
+// ----------------------------
+// MODAL
+// ----------------------------
+const modal = document.getElementById('modal');
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
+
+// Ouvrir le modal
+openBtn.addEventListener('click', () => {
+  modal.classList.remove('hidden');
+});
+
+// Fermer le modal
+closeBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+
+// Fermer si clic en dehors
+window.addEventListener('click', (e) => {
+  if(e.target === modal) {
+    modal.classList.add('hidden');
+  }
+});
+
+// ----------------------------
+  // ----------------------------
+  // FIREBASE INIT (v9 modulaire)
+  // ----------------------------
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, onSnapshot,
+    query, orderBy, serverTimestamp, getDocs
+  } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQQa-v3Zg-HNwKoNDiTGYrfyXX7SnIiGM",
+    authDomain: "tontine-easy.firebaseapp.com",
+    projectId: "tontine-easy",
+    storageBucket: "tontine-easy.firebasestorage.app",
+    messagingSenderId: "138013449509",
+    appId: "1:138013449509:web:a7e8b5462449f77e7f8ecc"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  // ----------------------------
+  // OUTILS
+  // ----------------------------
+  const tbody = document.querySelector('tbody');
+  const fmt  = new Intl.NumberFormat('fr-FR');
+
+  function renderRow(m) {
+    const tr = document.createElement('tr');
+    const progression = m.progression ?? 0;
+    const statut = m.statut ?? "En cours";
+    tr.innerHTML = `
+      <td class="py-3 px-6 ms-5">${(m.prenom ?? "-")} ${(m.nom ?? "")}</td>
+      <td class="py-3 px-6 ms-5">${m.dateDebut ?? "-"}</td>
+      <td class="py-3 px-6 ms-5">${fmt.format(m.seuil ?? 0)} FCFA</td>
+      <td class="py-3 px-6 ms-5">${progression}%</td>
+      <td class="py-3 px-6 ms-5">${statut}</td>
+      <td class="py-3 px-6 flex justify-center mx-auto ms-5">
+        <!-- Icône plus grande et bleue -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+         fill="none" 
+         viewBox="0 0 24 24" 
+         stroke-width="1.5" 
+         stroke="currentColor" 
+         class="w-6 h-6  font-bold-500 text-[#093545]">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor" 
+          class="size-6">
+          class="w-4 h-4  font-bold-500 text-[#093545]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+        </svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+          viewBox="0 0 24 24" 
+          stroke-width="1.5"
+          stroke="currentColor" 
+          class="size-6">
+          class="w-4 h-4  font-bold-500 text-[#093545]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+        </svg>
+
+
+          
+        
+
+      </td>
+    `;
+    return tr;
+  }
+
+  // ----------------------------
+  // AJOUT MEMBRE (seuil auto)
+  // ----------------------------
+  const form  = document.getElementById('formMembre');
+  // const modal = document.getElementById('modal');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // ⚠ tes placeholders dans le HTML sont "Prenom", "Profession", "Role"
+    const nom           = form.querySelector('input[placeholder="Nom"]').value;
+    const prenom        = form.querySelector('input[placeholder="Prenom"]').value;
+    const dateNaissance = form.querySelector('input[placeholder="Date de naissance"]').value;
+    const profession    = form.querySelector('input[placeholder="Profession"]').value;
+    const email         = form.querySelector('input[placeholder="Email"]').value;
+    const telephone     = form.querySelector('input[placeholder="Telephone"]').value;
+    const adresse       = form.querySelector('input[placeholder="Adresse"]').value;
+    const role          = form.querySelector('input[placeholder="Role"]').value;
+
+    // Date de début : aujourd’hui (ou mets ton propre champ si tu en ajoutes un)
+    const today = new Date().toISOString().slice(0,10); // "YYYY-MM-DD"
+
+    try {
+      await addDoc(collection(db, "membres"), {
+        nom,
+        prenom,
+        dateNaissance,
+        profession,
+        email,
+        telephone,
+        adresse,
+        role,
+        dateDebut: today,
+        seuil: 300000,                 // ✅ valeur par défaut pour la colonne "Seuil"
+        progression: 0,
+        statut: "En cours",
+        createdAt: serverTimestamp()
+      });
+
+      modal.classList.add('hidden');
+      form.reset();
+    } catch (err) {
+      console.error("Erreur lors de l'ajout :", err);
+      alert("Ajout impossible. Regarde la console.");
+    }
+  });
+
+  // ----------------------------
+  // LECTURE TEMPS RÉEL DU TABLEAU
+  // ----------------------------
+  const q = query(collection(db, "membres"), orderBy("createdAt", "asc"));
+  onSnapshot(q, (snap) => {
+    tbody.innerHTML = "";
+    snap.forEach(doc => {
+      const m = doc.data();
+      tbody.appendChild(renderRow(m));
+    });
+  });
+
+
+
+ 
+
+</script>
+ <script src="https://cdn.tailwindcss.com"></script>
+ </body>
