@@ -27,7 +27,7 @@
   <style>
     body { background: #efefef; }
     .card { box-shadow: 0 2px 8px rgba(8,48,58,0.06); border-radius: 8px; background: #fff; }
-    #sidebar { width: 16rem; }
+    #sidebar { width: 16rem;;}
     main { min-height: 100vh; }
 
     /* small adjustments for dropdowns */
@@ -35,10 +35,16 @@
     .notif-badge { transform: translate(6px, -6px); }
 
     /* accessible focus style (remplace suppression globale d'outline) */
-    :focus {
+    /* :focus {
       outline: 3px solid rgba(16,185,129,0.18);
       outline-offset: 2px;
-    }
+    } */
+
+ 
+:focus { outline: none; box-shadow: none; }
+/* :focus-visible { outline: 3px solid rgba(0,0,0,0.12); outline-offset: 3px; } */
+
+
 
     /* optionally hide default focus for mouse but keep for keyboard */
     :focus:not(:focus-visible) { outline: none; }
@@ -53,7 +59,7 @@
 <body class="antialiased font-sans text-lg text-gray-800">
 
   <!-- SIDEBAR -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 bg-brand-blue text-white flex flex-col -translate-x-full md:translate-x-0 transform transition-transform z-40 w-64" aria-hidden="true">
+  <aside id="sidebar" class="fixed inset-y-0 left-0 bg-[#093545]  text-white flex flex-col -translate-x-full md:translate-x-0 transform transition-transform z-40 w-64" aria-hidden="true">
     <div class="px-6 py-5 border-b border-brand-blue/70 flex items-center gap-3">
       <div class="w-10 h-10 bg-white/10 rounded flex items-center justify-center text-xl"><i class="bi bi-credit-card-2-back"></i></div>
       <div>
