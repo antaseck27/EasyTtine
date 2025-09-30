@@ -1,28 +1,25 @@
-
 <body>
   <!-- Container -->
-  <div class="w-[950px] mx-auto pt-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  
+  <div class="w-full max-w-[950px] mx-auto pt-8 px-4 sm:px-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
       <!-- Card Membres Actifs -->
-      <div class="card bg-[#20DF7F] text-[#FFFFFF] shadow-lg rounded-2xl p-6 
-                  transition duration-200 ease-in-out cursor-pointer group"
+      <div class="card bg-[#20DF7F] text-[#FFFFFF] shadow-lg rounded-xl p-6 transition duration-200 ease-in-out cursor-pointer group"
            data-card="actifs">
         <h2 class="text-lg font-semibold">Membres Actifs</h2>
         <p class="text-3xl font-bold mt-4">15</p>
       </div>
 
       <!-- Card Membres Bloqués -->
-      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 
-                  transition duration-200 ease-in-out cursor-pointer group"
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 transition duration-200 ease-in-out cursor-pointer group"
            data-card="bloques">
         <h2 class="text-lg font-semibold">Membres Bloqués</h2>
         <p class="text-3xl font-bold mt-4">5</p>
       </div>
 
       <!-- Card Total Effectif -->
-      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 
-                  transition duration-200 ease-in-out cursor-pointer group"
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 transition duration-200 ease-in-out cursor-pointer group"
            data-card="total">
         <h2 class="text-lg font-semibold">Total Effectif</h2>
         <p class="text-3xl font-bold mt-4">20</p>
@@ -30,272 +27,295 @@
 
     </div>
   </div>
- <!-- bouton ajouter membre -->
-  <div class="flex justify-end mt-6 mb-6 me-24 ">
-    <button id="openModal" 
-      class="bg-[#093545] text-white px-6  w-[200px] py-2 rounded-lg shadow  transition">
-     Ajouter
+
+  <!-- bouton ajouter membre -->
+  <div class="flex justify-end mt-6 mb-6 px-4  mx-10 sm:px-0">
+    <button id="openModal" class="bg-[#093545] text-white px-6 py-2 rounded-lg shadow w-full sm:w-[200px] transition">
+      Ajouter
     </button>
   </div>
 
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-2xl w-full max-w-[700px] p-8 relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+      <form id="formMembre" class="space-y-6 w-full">
+        <h1 class="flex justify-center text-lg">Ajouter un membre</h1>
 
-  <!-- Bouton Fermer -->
-    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-   
- <!-- Modal -->
-   
- <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-  <div class="bg-white rounded-2xl w-full max-w-[700px] p-8 relative">
+        <!-- Ligne 1 : Prénom et Nom -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Nom" class="w-full border border-gray-300 rounded px-3 py-2" required />
+          <input type="text" placeholder="Prenom" class="w-full border border-gray-300 rounded px-3 py-2" required />
+        </div>
 
-   
-    <form id="formMembre" class="space-y-6 w-full">
-         <h1 class="flex justify-center text-lg">Ajouter un membre</h1>
-      <!-- Ligne 1 : Prénom et Nom -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" placeholder="Nom" class="w-full border border-gray-300 rounded px-3 py-2" required />
-        <input type="text" placeholder="Prenom" class="w-full border border-gray-300 rounded px-3 py-2" required />
-      </div>
+        <!-- Ligne 2 : Date de naissance et Profession -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="date" placeholder="Date de naissance" class="w-full border border-gray-300 rounded px-3 py-2" required />
+          <input type="text" placeholder="Profession" class="w-full border border-gray-300 rounded px-3 py-2" required />
+        </div>
 
-      <!-- Ligne 2 : Date de naissance et Email -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="date" placeholder="Date de naissance" class="w-full border border-gray-300 rounded px-3 py-2" required />
-        <input type="text" placeholder="Profession" class="w-full border border-gray-300 rounded px-3 py-2" required />
-      </div>
+        <!-- Ligne 3 : Email et Telephone -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="email" placeholder="Email" class="w-full border border-gray-300 rounded px-3 py-2" />
+          <input type="number" placeholder="Telephone" class="w-full border border-gray-300 rounded px-3 py-2" />
+        </div>
 
-      <!-- Ligne 3 : Adresse et Organisme -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="email" placeholder="Email" class="w-full border border-gray-300 rounded px-3 py-2" />
-        <input type="number" placeholder="Telephone" class="w-full border border-gray-300 rounded px-3 py-2" />
-      </div>
+        <!-- Ligne 4 : Adresse et Role -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Adresse" class="w-full border border-gray-300 rounded px-3 py-2" />
+          <input type="text" placeholder="Role" class="w-full border border-gray-300 rounded px-3 py-2" />
+        </div>
 
-      <!-- Ligne 4 : Fonction -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-       <input type="text" placeholder="Adresse" class="w-full border border-gray-300 rounded px-3 py-2" />
-        <input type="text" placeholder="Role" class="w-full border border-gray-300 rounded px-3 py-2" />
-      </div>
-
-      <!-- Bouton Enregistrer -->
-      <div class="mt-6">
-        <button type="submit" class="bg-green-600 text-white w-full py-3 rounded hover:bg-green-700 transition">
-          Enregistrer
-        </button>
-      </div>
-
-    </form>
-
+        <!-- Bouton Enregistrer -->
+        <div class="mt-6">
+          <button type="submit" class="bg-green-600 text-white w-full py-3 rounded hover:bg-green-700 transition">
+            Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-
-  <!-- tableau vide -->
-  <div class=" w-full max-w-[1100px] mx-auto mt-8 shadow rounded-lg overflow-x-auto">
-  <table class="min-w-full rounded-lg bg-[#FFFFFF]">
+ <!-- Tableau Actifs -->
+<div class="w-full max-w-[1100px] mx-auto mt-8 shadow rounded-lg overflow-x-auto px-4 sm:px-0">
+  <table class="min-w-full h-[400px] bg-[#FFFFFF] rounded-lg">
     <thead class="bg-[#20DF7F]">
       <tr class="h-16 w-100">
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Nom</th>
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Date de début</th>
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Seuil</th>
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Progression</th>
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Statut</th>
-        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545]">Action</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Nom</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Date de début</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Seuil</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6 hidden sm:table-cell">Progression</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Statut</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6 hidden sm:table-cell">Action</th>
       </tr>
     </thead>
-    <tbody class="divide-y divide-gray-200">
-      <!-- Les lignes seront ajoutées dynamiquement ici -->
-    </tbody>
+    <tbody id="tbodyActifs" class="whitespace-nowrap"></tbody>
+  </table>
+  <div id="paginationActifs" class="flex justify-center gap-2 mt-4"></div>
+</div>
+
+<!-- Tableau Bloqués -->
+<div class="w-full max-w-[1100px] mx-auto mt-8 shadow rounded-lg overflow-x-auto px-4 sm:px-0">
+  <table class="min-w-full h-[300px] bg-[#FFFFFF] rounded-lg">
+    <thead class="bg-[#20DF7F]">
+      <tr class="h-16 w-100">
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Nom</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Date de début</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Seuil</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6">Statut</th>
+        <th class="py-3 px-4 text-left text-sm font-semibold text-[#093545] pl-6 hidden sm:table-cell">Action</th>
+      </tr>
+    </thead>
+    <tbody id="tbodyBloques" class="whitespace-nowrap"></tbody>
   </table>
 </div>
 
 
-
 <script type="module">
- // ----------------------------
-// CARDS SURVOL
-// ----------------------------
-const cards = document.querySelectorAll('.card');
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-cards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    cards.forEach(c => {
-      if(c !== card) {
-        // Remettre les autres cartes à blanc
-        c.classList.remove('bg-[#20DF7F]', 'text-[#FFFFFF]');
-        c.classList.add('bg-[#FFFFFF]', 'text-[#093545]');
-      }
+// Config Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAQQa-v3Zg-HNwKoNDiTGYrfyXX7SnIiGM",
+  authDomain: "tontine-easy.firebaseapp.com",
+  projectId: "tontine-easy",
+  storageBucket: "tontine-easy.firebasestorage.app",
+  messagingSenderId: "138013449509",
+  appId: "1:138013449509:web:a7e8b5462449f77e7f8ecc"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// -----------------------
+// Variables DOM
+// -----------------------
+const tbodyActifs = document.getElementById('tbodyActifs');
+const tbodyBloques = document.getElementById('tbodyBloques');
+const fmt = new Intl.NumberFormat('fr-FR');
+
+const cardActifs = document.querySelector('.card[data-card="actifs"] p');
+const cardBloques = document.querySelector('.card[data-card="bloques"] p');
+const cardTotal = document.querySelector('.card[data-card="total"] p');
+
+// Pagination
+const itemsPerPage = 5;
+let currentPageActifs = 1;
+let membresActifs = [];
+let membresBloques = [];
+
+// -----------------------
+// Render ligne membre actif
+// -----------------------
+function renderRow(m) {
+  const tr = document.createElement('tr');
+  const dateDebut = m.dateDebut?.toDate ? m.dateDebut.toDate().toLocaleDateString('fr-FR') : m.dateDebut ?? "-";
+
+  tr.innerHTML = `
+    <td class="py-3 px-6 ms-5">${m.prenom ?? "-"} ${m.nom ?? ""}</td>
+    <td class="py-3 px-6 ms-5">${dateDebut}</td>
+    <td class="py-3 px-6 ms-5">${fmt.format(m.seuil ?? 0)} FCFA</td>
+    <td class="py-3 px-6 ms-5">${m.progression ?? 0}%</td>
+    <td class="py-3 px-6 ms-5">${m.statut ?? "En cours"}</td>
+    <td class="py-3 px-6 ms-5 flex gap-3">
+      <!-- Vue -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-blue-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+      <!-- Modifier -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-yellow-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
+      </svg>
+      <!-- Bloquer -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-red-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+      </svg>
+    </td>
+  `;
+  return tr;
+}
+
+// -----------------------
+// Render ligne membre bloqué
+// -----------------------
+function renderRowBloque(m) {
+  const tr = document.createElement('tr');
+  const dateDebut = m.dateDebut?.toDate ? m.dateDebut.toDate().toLocaleDateString('fr-FR') : m.dateDebut ?? "-";
+
+  tr.innerHTML = `
+    <td class="py-3 px-6 ms-5">${m.prenom ?? "-"} ${m.nom ?? ""}</td>
+    <td class="py-3 px-6 ms-5">${dateDebut}</td>
+    <td class="py-3 px-6 ms-5">${fmt.format(m.seuil ?? 0)} FCFA</td>
+    <td class="py-3 px-6 ms-5 ${m.statut === "Bloqué" ? "text-[#FF5959] font-bold" : ""}">${m.statut ?? "En cours"}</td>
+    <td class="py-3 px-6 ms-5 flex gap-3">
+      <!-- Vue -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-blue-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+      <!-- Bloquer -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-red-500 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+      </svg>
+    </td>
+  `;
+  return tr;
+}
+
+// -----------------------
+// Pagination pour membres actifs
+// -----------------------
+function renderTableActifsPage(page) {
+  tbodyActifs.innerHTML = '';
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  membresActifs.slice(start, end).forEach(m => tbodyActifs.appendChild(renderRow(m)));
+  renderPaginationActifs();
+}
+
+function renderPaginationActifs() {
+  const totalPages = Math.ceil(membresActifs.length / itemsPerPage);
+  const container = document.getElementById('paginationActifs');
+  container.innerHTML = '';
+  for(let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.className = `px-3 py-1 rounded border ${i===currentPageActifs ? 'bg-[#20DF7F] text-white':'bg-white text-[#093545]'} cursor-pointer`;
+    btn.addEventListener('click', () => {
+      currentPageActifs = i;
+      renderTableActifsPage(i);
     });
+    container.appendChild(btn);
+  }
+}
 
-    // Activer la carte survolée
-    card.classList.remove('bg-[#FFFFFF]', 'text-[#093545]');
-    card.classList.add('bg-[#20DF7F]', 'text-[#FFFFFF]');
+// -----------------------
+// Snapshot temps réel
+// -----------------------
+const q = query(collection(db, "membres"), orderBy("createdAt", "asc"));
+onSnapshot(q, (snap) => {
+  membresActifs = [];
+  membresBloques = [];
+
+  snap.forEach(doc => {
+    const m = doc.data();
+    if(m.statut === "Bloqué") membresBloques.push(m);
+    else membresActifs.push(m);
   });
+
+  cardActifs.textContent = membresActifs.length;
+  cardBloques.textContent = membresBloques.length;
+  cardTotal.textContent = membresActifs.length + membresBloques.length;
+
+  renderTableActifsPage(currentPageActifs);
+  // Membre bloqués sans pagination
+  tbodyBloques.innerHTML = '';
+  membresBloques.forEach(m => tbodyBloques.appendChild(renderRowBloque(m)));
 });
 
-// ----------------------------
-// MODAL
-// ----------------------------
+// -----------------------
+// Modal Ajouter Membre
+// -----------------------
 const modal = document.getElementById('modal');
 const openBtn = document.getElementById('openModal');
 const closeBtn = document.getElementById('closeModal');
+openBtn.addEventListener('click', ()=>modal.classList.remove('hidden'));
+closeBtn.addEventListener('click', ()=>modal.classList.add('hidden'));
+window.addEventListener('click', e => { if(e.target===modal) modal.classList.add('hidden'); });
 
-// Ouvrir le modal
-openBtn.addEventListener('click', () => {
-  modal.classList.remove('hidden');
-});
+// -----------------------
+// Cards Hover & Selection
+// -----------------------
+const cards = document.querySelectorAll('.card');
+const divActifs = tbodyActifs.closest('div');
+const divBloques = tbodyBloques.closest('div');
 
-// Fermer le modal
-closeBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
-});
+function showTable(cardType) {
+  if(cardType==='actifs'){ divActifs.style.display='block'; divBloques.style.display='none'; }
+  else if(cardType==='bloques'){ divActifs.style.display='none'; divBloques.style.display='block'; }
+  else{ divActifs.style.display='block'; divBloques.style.display='block'; }
 
-// Fermer si clic en dehors
-window.addEventListener('click', (e) => {
-  if(e.target === modal) {
-    modal.classList.add('hidden');
-  }
-});
-
-// ----------------------------
-  // ----------------------------
-  // FIREBASE INIT (v9 modulaire)
-  // ----------------------------
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-  import {
-    getFirestore, collection, addDoc, onSnapshot,
-    query, orderBy, serverTimestamp, getDocs
-  } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAQQa-v3Zg-HNwKoNDiTGYrfyXX7SnIiGM",
-    authDomain: "tontine-easy.firebaseapp.com",
-    projectId: "tontine-easy",
-    storageBucket: "tontine-easy.firebasestorage.app",
-    messagingSenderId: "138013449509",
-    appId: "1:138013449509:web:a7e8b5462449f77e7f8ecc"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
-
-  // ----------------------------
-  // OUTILS
-  // ----------------------------
-  const tbody = document.querySelector('tbody');
-  const fmt  = new Intl.NumberFormat('fr-FR');
-
-  function renderRow(m) {
-    const tr = document.createElement('tr');
-    const progression = m.progression ?? 0;
-    const statut = m.statut ?? "En cours";
-    tr.innerHTML = `
-      <td class="py-3 px-6 ms-5">${(m.prenom ?? "-")} ${(m.nom ?? "")}</td>
-      <td class="py-3 px-6 ms-5">${m.dateDebut ?? "-"}</td>
-      <td class="py-3 px-6 ms-5">${fmt.format(m.seuil ?? 0)} FCFA</td>
-      <td class="py-3 px-6 ms-5">${progression}%</td>
-      <td class="py-3 px-6 ms-5">${statut}</td>
-      <td class="py-3 px-6 flex justify-center mx-auto ms-5">
-        <!-- Icône plus grande et bleue -->
-        <svg xmlns="http://www.w3.org/2000/svg" 
-         fill="none" 
-         viewBox="0 0 24 24" 
-         stroke-width="1.5" 
-         stroke="currentColor" 
-         class="w-6 h-6  font-bold-500 text-[#093545]">
-         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-        </svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg"
-         fill="none"
-         viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor" 
-          class="size-6">
-          class="w-4 h-4  font-bold-500 text-[#093545]">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-        </svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg"
-         fill="none"
-          viewBox="0 0 24 24" 
-          stroke-width="1.5"
-          stroke="currentColor" 
-          class="size-6">
-          class="w-4 h-4  font-bold-500 text-[#093545]">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-        </svg>
-
-
-          
-        
-
-      </td>
-    `;
-    return tr;
-  }
-
-  // ----------------------------
-  // AJOUT MEMBRE (seuil auto)
-  // ----------------------------
-  const form  = document.getElementById('formMembre');
-  // const modal = document.getElementById('modal');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // ⚠ tes placeholders dans le HTML sont "Prenom", "Profession", "Role"
-    const nom           = form.querySelector('input[placeholder="Nom"]').value;
-    const prenom        = form.querySelector('input[placeholder="Prenom"]').value;
-    const dateNaissance = form.querySelector('input[placeholder="Date de naissance"]').value;
-    const profession    = form.querySelector('input[placeholder="Profession"]').value;
-    const email         = form.querySelector('input[placeholder="Email"]').value;
-    const telephone     = form.querySelector('input[placeholder="Telephone"]').value;
-    const adresse       = form.querySelector('input[placeholder="Adresse"]').value;
-    const role          = form.querySelector('input[placeholder="Role"]').value;
-
-    // Date de début : aujourd’hui (ou mets ton propre champ si tu en ajoutes un)
-    const today = new Date().toISOString().slice(0,10); // "YYYY-MM-DD"
-
-    try {
-      await addDoc(collection(db, "membres"), {
-        nom,
-        prenom,
-        dateNaissance,
-        profession,
-        email,
-        telephone,
-        adresse,
-        role,
-        dateDebut: today,
-        seuil: 300000,                 // ✅ valeur par défaut pour la colonne "Seuil"
-        progression: 0,
-        statut: "En cours",
-        createdAt: serverTimestamp()
-      });
-
-      modal.classList.add('hidden');
-      form.reset();
-    } catch (err) {
-      console.error("Erreur lors de l'ajout :", err);
-      alert("Ajout impossible. Regarde la console.");
-    }
+  cards.forEach(card=>{
+    if(card.dataset.card===cardType){ card.style.backgroundColor='#20DF7F'; card.style.color='#FFFFFF'; }
+    else if(cardType==='total'){ card.style.backgroundColor=card.dataset.card==='actifs'?'#20DF7F':'#FFFFFF'; card.style.color=card.dataset.card==='actifs'?'#FFFFFF':'#093545'; }
+    else{ card.style.backgroundColor='#FFFFFF'; card.style.color='#093545'; }
   });
+}
 
-  // ----------------------------
-  // LECTURE TEMPS RÉEL DU TABLEAU
-  // ----------------------------
-  const q = query(collection(db, "membres"), orderBy("createdAt", "asc"));
-  onSnapshot(q, (snap) => {
-    tbody.innerHTML = "";
-    snap.forEach(doc => {
-      const m = doc.data();
-      tbody.appendChild(renderRow(m));
+showTable('total');
+cards.forEach(card=>card.addEventListener('click',()=>showTable(card.dataset.card)));
+
+// -----------------------
+// Ajouter un membre
+// -----------------------
+const form = document.getElementById('formMembre');
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const [nom, prenom, , profession, email, telephone, adresse, role] = form.querySelectorAll('input');
+
+  try{
+    await addDoc(collection(db,"membres"),{
+      nom:nom.value,
+      prenom:prenom.value,
+      profession:profession.value,
+      email:email.value,
+      telephone:telephone.value,
+      adresse:adresse.value,
+      role:role.value,
+      seuil:300000,
+      progression:0,
+      statut:"En cours",
+      dateDebut:serverTimestamp(),
+      createdAt:serverTimestamp()
     });
-  });
-
-
-
- 
-
+    modal.classList.add('hidden');
+    form.reset();
+  } catch(err){ console.error("Erreur ajout membre :",err); }
+});
 </script>
- <script src="https://cdn.tailwindcss.com"></script>
- </body>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</body>
