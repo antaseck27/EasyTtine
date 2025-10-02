@@ -1,0 +1,172 @@
+<body>
+
+<!-- Bouton pour ouvrir le modal -->
+<button id="openModalBtn" class="px-4 py-2 bg-[#20DF7F] text-white rounded flex justify-end ">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+
+</button>
+
+<!-- Modal -->
+<div id="cotisationsModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+  <div class="bg-white w-[90%] max-w-[1000px] rounded-2xl p-6 relative text-center">
+    <!-- Bouton fermer -->
+    <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900">&times;</button>
+    
+    <h2 class="font-bold mb-6 bg-[#20DF7F] h-[50px] shadow-lg rounded-xl flex items-center justify-center">Cotisation Termine</h2>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full h-[500px] mx-auto text-center ">
+        <thead class="bg-[#093545] text-[#FFFFFF] h-[60px] shadow-lg">
+          <tr>
+            <th class="px-4 py-2">Membres</th>
+            <th class="px-4 py-2">Date de début</th>
+            <th class="px-4 py-2">Date de fin</th>
+            <th class="px-4 py-2">Montant à cotiser</th>
+            <th class="px-4 py-2">Statut</th>
+            <th class="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="modalTableBody">
+          <!-- Les lignes seront ajoutées via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Container -->
+  <div class="w-full max-w-[950px] mx-auto pt-8 px-4 sm:px-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+      <!-- Card Cotisations Payées -->
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-xl p-6 transition duration-200 ease-in-out cursor-pointer group"
+           data-card="juin">
+        <h2 class="text-lg font-semibold">Septembre</h2>
+        <p class="text-3xl font-bold mt-4">500 000 FCFA</p>
+      </div>
+
+      <!-- Card Cotisations Impayées -->
+      <div class="card bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 transition duration-200 ease-in-out cursor-pointer group"
+           data-card="mai">
+        <h2 class="text-lg font-semibold">Octobre</h2>
+        <p class="text-3xl font-bold mt-4">350 000 FCFA</p>
+      </div>
+
+      <!-- Card Total Cotisations -->
+      <div class="card h-[150px] bg-[#FFFFFF] text-[#093545] shadow-lg rounded-2xl p-6 transition duration-200 ease-in-out cursor-pointer group"
+           data-card="total-cotisations">
+        <h2 class="text-lg font-semibold">Total Caisse</h2>
+        <p class="text-3xl font-bold mt-4">850 000 FCFA</p>
+        
+        <!-- Progression alignée avec pourcentage -->
+      <div class=" flex items-center space-x-3 ">
+      <!-- Barre de progression -->
+       <div class="w-full bg-gray-200 rounded-full h-2">
+         <div class="bg-[#20DF7F] h-2 rounded-full" style="width: 30%;"></div>
+        </div>
+
+       <!-- Pourcentage -->
+      <span class="text-lg font-bold">30%</span>
+     </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="w-full max-w-[950px]  mx-auto mt-6 p-6 rounded-2xl">
+  <table id="cotisations-table" class="w-full h-[400px] table-auto bg-[#FFFFFF] ">
+    <thead class="bg-[#093545] h-[70px] shadow-lg rounded-xl">
+      <tr class="bg-[#20DF7F] ">
+        <th class=" px-4 py-2 text-left">Membres</th>
+        <th class=" px-4 py-2">Date de début</th>
+        <th class=" px-4 py-2">Montant cotisé</th>
+        <th class=" px-4 py-2">Montant restant</th>
+        <th class=" px-4 py-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Les lignes seront ajoutées par JS -->
+    </tbody>
+  </table>
+</div>
+
+
+<script>
+    const evolutionCotisations = [
+    { membre: "Ahmed Cisse", dateDebut: "2025-09-30", dateFin: "2026-02-30", montantCotise: "150 000 FCFA", statut: "Terminé" },
+    { membre: "Ndeye Fatou Ndieguene", dateDebut: "2025-09-30", dateFin: "2026-02-30", montantCotise: "150 000 FCFA", statut: "Terminé" },
+    { membre: "Nogaye Ndao", dateDebut: "2025-09-30", dateFin: "2026-02-30", montantCotise: "150 000 FCFA", statut: "Terminé" },
+    { membre: "Colle Fall", dateDebut: "2025-09-30", dateFin: "2026-02-30", montantCotise: "150 000 FCFA", statut: "Terminé" },
+    { membre: "Anta Seck", dateDebut: "2025-09-30", dateFin: "2026-02-30", montantCotise: "150 000 FCFA", statut: "Terminé" }
+  ];
+
+  const modalTableBody = document.getElementById('modalTableBody');
+
+  // Remplir le tableau dynamiquement
+  evolutionCotisations.forEach(cot => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="px-4 py-2 ">${cot.membre}</td>
+      <td class="px-4 py-2 ">${cot.dateDebut}</td>
+      <td class="px-4 py-2 ">${cot.dateFin}</td>
+      <td class="px-4 py-2 ">${cot.montantCotise}</td>
+      <td class="px-4 py-2  text-[#20DF7F] font-bold">${cot.statut}</td>
+      <td class="px-4 py-2 ">
+        <!-- Vue -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-blue-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+      </td>
+        
+      </td>
+    `;
+    modalTableBody.appendChild(tr);
+  });
+
+  // Gestion ouverture / fermeture modal
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const modal = document.getElementById('cotisationsModal');
+
+  openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+  closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
+
+
+
+  // Données statiques
+  const cotisations = [
+    { membre: "Ahmed Cisse", dateDebut: "2025-09-30", montantCotise: "100 000 FCFA", montantRestant: "50 000 FCFA" },
+    { membre: "Ndeye Fatou Ndieguene", dateDebut: "2025-09-30", montantCotise: "100 000 FCFA", montantRestant: "50 000 FCFA" },
+    { membre: "Nogaye Ndao", dateDebut: "2025-09-30", montantCotise: "100 000 FCFA", montantRestant: "50 000 FCFA" },
+    { membre: "Colle Fall", dateDebut: "2025-09-30", montantCotise: "100 000 FCFA", montantRestant: "50 000 FCFA" },
+     { membre: "Anta Seck", dateDebut: "2025-09-30", montantCotise: "100 000 FCFA", montantRestant: "50 000 FCFA" }
+  ];
+
+  const tableBody = document.querySelector("#cotisations-table tbody");
+
+  cotisations.forEach(cotisation => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td class=" px-4 py-2 text-left">${cotisation.membre}</td>
+      <td class=" px-4 py-2 text-center">${cotisation.dateDebut}</td>
+      <td class=" px-4 py-2 text-center">${cotisation.montantCotise}</td>
+      <td class=" px-4 py-2 text-center">${cotisation.montantRestant}</td>
+      <td class=" px-4 py-2 text-right">
+     <!-- Vue -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer hover:text-blue-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+</script>
+ <script src="https://cdn.tailwindcss.com"></script>
+</body>
