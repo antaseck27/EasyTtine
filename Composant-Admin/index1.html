@@ -4,14 +4,12 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Bakéli Tontine</title>
-  
 
   <!-- icone bootstrap + fontawesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Tailwind CDN -->
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,40 +27,24 @@
   <style>
     body { background: #efefef; }
     .card { box-shadow: 0 2px 8px rgba(8,48,58,0.06); border-radius: 8px; background: #fff; }
-    #sidebar { width: 16rem;;}
+    #sidebar { width: 16rem; }
     main { min-height: 100vh; }
 
-    /* small adjustments for dropdowns */
     .dropdown-panel { min-width: 14rem; max-width: 26rem; }
     .notif-badge { transform: translate(6px, -6px); }
 
-    /* accessible focus style (remplace suppression globale d'outline) */
-    /* :focus {
-      outline: 3px solid rgba(16,185,129,0.18);
-      outline-offset: 2px;
-    } */
-
- 
-:focus { outline: none; box-shadow: none; }
-/* :focus-visible { outline: 3px solid rgba(0,0,0,0.12); outline-offset: 3px; } */
-
-
-
-    /* optionally hide default focus for mouse but keep for keyboard */
+    :focus { outline: none; box-shadow: none; }
     :focus:not(:focus-visible) { outline: none; }
-
-    /* small dropdown z-index safety */
     .dropdown-panel { z-index: 9999; }
   </style>
 
-  <!-- Chart.js chargé une seule fois, defer pour être sûr qu'il soit dispo avant scripts injectés -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  
 </head>
 <body class="antialiased font-sans text-lg text-gray-800">
 
   <!-- SIDEBAR -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 bg-[#093545]  text-white flex flex-col -translate-x-full md:translate-x-0 transform transition-transform z-40 w-64" aria-hidden="true">
+  <aside id="sidebar" class="fixed inset-y-0 left-0 bg-[#093545] text-white flex flex-col -translate-x-full md:translate-x-0 transform transition-transform z-40 w-64" aria-hidden="true">
     <div class="px-6 py-5 border-b border-brand-blue/70 flex items-center gap-3">
       <div class="w-10 h-10 bg-white/10 rounded flex items-center justify-center text-xl"><i class="bi bi-credit-card-2-back"></i></div>
       <div>
@@ -99,7 +81,7 @@
           <div id="sidebarParamPanel" class="mt-1 ml-2 mr-2 rounded hidden">
             <ul class="space-y-1">
               <li><button data-file="param_general.html" data-key="param_general" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Paramètre général</button></li>
-              <li><button data-file="param_user.html" data-key="param_archive" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Utilisateurs</button></li>
+              <li><button data-file="param_user.html" data-key="param_user" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Utilisateurs</button></li>
               <li><button data-file="param_archive.html" data-key="param_archive" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Archive</button></li>
               <li><button data-file="param_bloque.html" data-key="param_bloque" class="sub-menu-item w-full text-left px-3 py-2 mx-5 rounded hover:bg-white/10 text-sm">Membre bloqué</button></li>
             </ul>
@@ -144,27 +126,26 @@
         </div>
       </div>
 
-      <!-- user dropdown -->
+      <!-- User dropdown -->
       <div class="relative">
         <button id="btnUser" class="flex items-center gap-3 px-2 py-1 rounded hover:bg-gray-100" aria-haspopup="true" aria-expanded="false" aria-controls="userPanel">
-          <div class="hidden sm:block text-sm text-gray-600">IDRISSA GNING</div>
-          <!-- image locale stable (ou utiliser ?u=seed) -->
+          <div id="userName" class="hidden sm:block text-sm text-gray-600">Chargement...</div>
           <img id="profileImg" src="image1.jpg" alt="profil" class="w-10 h-10 rounded-full" />
-          <!-- alternative stable remote: src="https://i.pravatar.cc/40?u=ndiaga@sall.example" -->
         </button>
-
+      
         <div id="userPanel" class="hidden dropdown-panel absolute right-0 mt-2 bg-white border rounded shadow-lg overflow-hidden z-50" role="menu" aria-labelledby="btnUser">
-          <div class="p-3 border-b"><div class="font-semibold">Ndiaga SALL</div><div class="text-xs text-gray-500">Admin</div></div>
+          <div class="p-3 border-b">
+            <div id="userFullName" class="font-semibold">Nom complet</div>
+            <div id="userRole" class="text-xs text-gray-500">Role</div>
+          </div>
           <div class="p-2">
             <button id="openChangePass" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Changer le mot de passe</button>
-            <!-- <button id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" >Se déconnecter</button> -->
-            <a id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" href="/index.html">Se Deconnecter</a>
+            <a id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" href="/index.html">Se Déconnecter</a>
           </div>
         </div>
       </div>
     </div>
   </header>
- 
 
   <!-- ZONE PRINCIPALE -->
   <main id="mainContent" class="pt-20 md:pt-20 ml-0 md:ml-64 px-4 md:px-8 pb-16">
@@ -173,7 +154,7 @@
     </div>
   </main>
 
-  <!-- Modal change password (inchangé) -->
+  <!-- Modal change password -->
   <div id="modalChangePass" class="fixed inset-0 hidden items-center justify-center z-60">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative w-full max-w-md mx-auto p-4">
@@ -194,168 +175,153 @@
     </div>
   </div>
 
-  <!-- SCRIPT : amélioration de runEmbeddedScripts et comportement SPA -->
+  <script type="module" src="auth.js"></script>
   <script type="module">
+    (function () {
+      const menu = document.getElementById('menu');
+      const contentRoot = document.getElementById('contentRoot');
+      const sidebar = document.getElementById('sidebar');
+      const btnSidebarToggle = document.getElementById('btnSidebarToggle');
+      const shellPageTitle = document.getElementById('shellPageTitle');
+      const shellSubtitle = document.getElementById('shellSubtitle');
+      const sidebarParamToggle = document.getElementById('sidebarParamToggle');
+      const sidebarParamPanel = document.getElementById('sidebarParamPanel');
+      const sidebarParamIcon = document.getElementById('sidebarParamIcon');
 
+      const titles = {
+        dashboard: { title: 'ADMIN Dashboard', subtitle: 'Tableau de bord' },
+        utilisateurs: { title: 'Utilisateurs', subtitle: 'Liste des membres' },
+        cotisations: { title: 'Cotisations', subtitle: 'Gérer les cotisations' },
+        param_general: { title: 'Paramètres — Général', subtitle: 'Configuration générale' },
+        param_bloque: { title: 'Paramètres — Membre bloqué', subtitle: 'Gérer les membres bloqués' },
+        param_archive: { title: 'Paramètres — Archive', subtitle: 'Archives des cotisations' }
+      };
 
-  // Fonction qui charge dashboard.js quand on clique sur Dashboard
-  window.showDashboard = function () {
-    import("./dashboard.js").then(module => {
-      console.log("Dashboard chargé ✅");
-      // si dashboard.js exporte loadCotisations, on l'appelle
-      if (module.loadCotisations) {
-        module.loadCotisations();
+      function showLoading() {
+        contentRoot.innerHTML = '<div class="text-center py-20 text-gray-500">Chargement...</div>';
       }
-    }).catch(err => {
-      console.error("Erreur de chargement du dashboard :", err);
-    });
-  };
 
-  // Auto-lancer si on arrive directement sur #dashboard
-  if (location.hash === "#dashboard") {
-    showDashboard();
-  }
-
-  (function () {
-    const menu = document.getElementById('menu');
-    const contentRoot = document.getElementById('contentRoot');
-    const sidebar = document.getElementById('sidebar');
-    const btnSidebarToggle = document.getElementById('btnSidebarToggle');
-    const shellPageTitle = document.getElementById('shellPageTitle');
-    const shellSubtitle = document.getElementById('shellSubtitle');
-
-    const sidebarParamToggle = document.getElementById('sidebarParamToggle');
-    const sidebarParamPanel = document.getElementById('sidebarParamPanel');
-    const sidebarParamIcon = document.getElementById('sidebarParamIcon');
-
-    const titles = {
-      dashboard: { title: 'ADMIN Dashboard', subtitle: 'Tableau de bord' },
-      utilisateurs: { title: 'Utilisateurs', subtitle: 'Liste des membres' },
-      cotisations: { title: 'Cotisations', subtitle: 'Gérer les cotisations' },
-      param_general: { title: 'Paramètres — Général', subtitle: 'Configuration générale' },
-      param_bloque: { title: 'Paramètres — Membre bloqué', subtitle: 'Gérer les membres bloqués' },
-      param_archive: { title: 'Paramètres — Archive', subtitle: 'Archives des cotisations' }
-    };
-
-    function showLoading() {
-      contentRoot.innerHTML = '<div class="text-center py-20 text-gray-500">Chargement...</div>';
-    }
-
-    // nouvelle version : exécute scripts externes SEQUENTIELLEMENT (await) et inline dans l'ordre
-    async function runEmbeddedScripts(container) {
-      const scripts = Array.from(container.querySelectorAll('script'));
-      for (const oldScript of scripts) {
-        if (oldScript.src) {
-          // externe : charger et attendre
-          await new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = oldScript.src;
-            s.async = false;
-            s.onload = resolve;
-            s.onerror = reject;
-            document.head.appendChild(s);
-          }).catch(err => console.error('Erreur charged external script', oldScript.src, err));
-        } else {
-          // inline : exécuter en ajoutant un nouveau script
-          const s = document.createElement('script');
-          if (oldScript.type) s.type = oldScript.type;
-          s.textContent = oldScript.textContent;
-          document.body.appendChild(s);
-          // on peut enlever immédiatement
-          document.body.removeChild(s);
-        }
-      }
-    }
-
-    async function loadPage(file, key, pushHistory = true) {
-      try {
-        showLoading();
-        const resp = await fetch(file, { cache: 'no-store' });
-        if (!resp.ok) throw new Error('Fichier introuvable: ' + file);
-        const html = await resp.text();
-        contentRoot.innerHTML = html;
-
-        if (titles[key]) {
-          shellPageTitle.textContent = titles[key].title;
-          shellSubtitle.textContent = titles[key].subtitle;
-          shellSubtitle.classList.remove('hidden');
-        } else {
-          const customTitleEl = contentRoot.querySelector('[data-shell-title]');
-          if (customTitleEl) {
-            shellPageTitle.textContent = customTitleEl.getAttribute('data-shell-title') || customTitleEl.textContent.trim();
-            shellSubtitle.classList.add('hidden');
+      async function runEmbeddedScripts(container) {
+        const scripts = Array.from(container.querySelectorAll("script"));
+        for (const oldScript of scripts) {
+          const newScript = document.createElement("script");
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+            newScript.async = false;
+            if (oldScript.type) newScript.type = oldScript.type;
+            document.head.appendChild(newScript);
+            await new Promise((resolve) => {
+              newScript.onload = resolve;
+              newScript.onerror = resolve;
+            });
           } else {
-            shellPageTitle.textContent = 'Bakéli Tontine';
-            shellSubtitle.classList.add('hidden');
+            if (oldScript.type) newScript.type = oldScript.type;
+            newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            document.body.removeChild(newScript);
           }
         }
+      }
 
-        // active styles
-        document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('bg-white/10'));
-        document.querySelectorAll('.sub-menu-item').forEach(btn => btn.classList.remove('bg-white/10'));
+      async function loadPage(file, key, pushHistory = true) {
+        try {
+          showLoading();
+          const resp = await fetch(file, { cache: 'no-store' });
+          if (!resp.ok) throw new Error('Fichier introuvable: ' + file);
+          const html = await resp.text();
+          contentRoot.innerHTML = html;
+          if (key === "utilisateurs") {
+  import("./utilisateurs.js");
+}
 
-        const activeBtn = document.querySelector(`[data-key="${key}"]`);
-        if (activeBtn) {
-          activeBtn.classList.add('bg-white/10');
-          if (activeBtn.classList.contains('sub-menu-item')) {
-            sidebarParamPanel.classList.remove('hidden');
-            sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-up"></i>';
+
+          if (titles[key]) {
+            shellPageTitle.textContent = titles[key].title;
+            shellSubtitle.textContent = titles[key].subtitle;
+            shellSubtitle.classList.remove('hidden');
+          } else {
+            const customTitleEl = contentRoot.querySelector('[data-shell-title]');
+            if (customTitleEl) {
+              shellPageTitle.textContent = customTitleEl.getAttribute('data-shell-title') || customTitleEl.textContent.trim();
+              shellSubtitle.classList.add('hidden');
+            } else {
+              shellPageTitle.textContent = 'Bakéli Tontine';
+              shellSubtitle.classList.add('hidden');
+            }
           }
+
+          document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('bg-white/10'));
+          document.querySelectorAll('.sub-menu-item').forEach(btn => btn.classList.remove('bg-white/10'));
+          const activeBtn = document.querySelector(`[data-key="${key}"]`);
+          if (activeBtn) {
+            activeBtn.classList.add('bg-white/10');
+            if (activeBtn.classList.contains('sub-menu-item')) {
+              sidebarParamPanel.classList.remove('hidden');
+              sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-up"></i>';
+            }
+          }
+
+          if (pushHistory) history.pushState({ file, key }, '', `#${key}`);
+
+          contentRoot.setAttribute('tabindex', '-1');
+          contentRoot.focus();
+
+          await runEmbeddedScripts(contentRoot);
+
+        } catch (err) {
+          console.error(err);
+          contentRoot.innerHTML = '<div class="text-center py-12"><div class="text-red-600 font-semibold">Erreur de chargement</div><div class="text-sm text-gray-500 mt-2">' + (err.message || '') + '</div></div>';
         }
-
-        if (pushHistory) history.pushState({ file, key }, '', `#${key}`);
-
-        // focus
-        contentRoot.setAttribute('tabindex', '-1');
-        contentRoot.focus();
-
-        // exécute les scripts embarqués (et attend les externes si nécessaire)
-        await runEmbeddedScripts(contentRoot);
-
-      } catch (err) {
-        console.error(err);
-        contentRoot.innerHTML = '<div class="text-center py-12"><div class="text-red-600 font-semibold">Erreur de chargement</div><div class="text-sm text-gray-500 mt-2">' + (err.message || '') + '</div></div>';
       }
-    }
 
-    // delegation menu
-    menu.addEventListener('click', (e) => {
-      const btn = e.target.closest('button[data-file]');
-      if (!btn) return;
-      const file = btn.getAttribute('data-file');
-      const key = btn.getAttribute('data-key') || '';
-      loadPage(file, key, true);
+      // Délégation menu
+      menu.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-file]');
+        if (!btn) return;
+        const file = btn.getAttribute('data-file');
+        const key = btn.getAttribute('data-key') || '';
+        loadPage(file, key, true);
+        if (window.innerWidth < 768) {
+          sidebar.classList.add('-translate-x-full');
+          sidebar.setAttribute('aria-hidden','true');
+        }
+      });
 
-      if (window.innerWidth < 768) {
-        sidebar.classList.add('-translate-x-full');
-        sidebar.setAttribute('aria-hidden','true');
-      }
-    });
+      // Accordéon paramètres
+      sidebarParamToggle.addEventListener('click', () => {
+        const isHidden = sidebarParamPanel.classList.contains('hidden');
+        if (isHidden) {
+          sidebarParamPanel.classList.remove('hidden');
+          sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-up"></i>';
+        } else {
+          sidebarParamPanel.classList.add('hidden');
+          sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-down"></i>';
+        }
+      });
 
-    sidebarParamToggle.addEventListener('click', () => {
-      const isHidden = sidebarParamPanel.classList.contains('hidden');
-      if (isHidden) { sidebarParamPanel.classList.remove('hidden'); sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-up"></i>'; }
-      else { sidebarParamPanel.classList.add('hidden'); sidebarParamIcon.innerHTML = '<i class="bi bi-chevron-down"></i>'; }
-    });
+      // Sidebar mobile
+      btnSidebarToggle.addEventListener('click', () => {
+        const hidden = sidebar.classList.contains('-translate-x-full');
+        if (hidden) { sidebar.classList.remove('-translate-x-full'); sidebar.setAttribute('aria-hidden','false'); }
+        else { sidebar.classList.add('-translate-x-full'); sidebar.setAttribute('aria-hidden','true'); }
+      });
 
-    btnSidebarToggle.addEventListener('click', () => {
-      const hidden = sidebar.classList.contains('-translate-x-full');
-      if (hidden) { sidebar.classList.remove('-translate-x-full'); sidebar.setAttribute('aria-hidden','false'); }
-      else { sidebar.classList.add('-translate-x-full'); sidebar.setAttribute('aria-hidden','true'); }
-    });
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth >= 768) return;
+        if (!sidebar.contains(e.target) && !btnSidebarToggle.contains(e.target)) {
+          sidebar.classList.add('-translate-x-full');
+          sidebar.setAttribute('aria-hidden','true');
+        }
+      });
 
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth >= 768) return;
-      if (!sidebar.contains(e.target) && !btnSidebarToggle.contains(e.target)) {
-        sidebar.classList.add('-translate-x-full');
-        sidebar.setAttribute('aria-hidden','true');
-      }
-    });
+      // Navigation par hash
+      window.addEventListener('popstate', (e) => {
+        const state = e.state;
+        if (state && state.file) loadPage(state.file, state.key, false);
+      });
 
-    window.addEventListener('popstate', (e) => {
-      const state = e.state;
-      if (state && state.file) loadPage(state.file, state.key, false);
-      else {
+      // Initialisation
+      (function initial() {
         const keyFromHash = (location.hash || '#dashboard').replace('#', '');
         const map = {
           dashboard: 'dashboard.html',
@@ -367,72 +333,8 @@
         };
         const file = map[keyFromHash] || 'dashboard.html';
         loadPage(file, keyFromHash || 'dashboard', false);
-      }
-    });
-
-    // initial
-    (function initial() {
-      const keyFromHash = (location.hash || '#dashboard').replace('#', '');
-      const map = {
-        dashboard: 'dashboard.html',
-        utilisateurs: 'utilisateurs.html',
-        cotisations: 'cotisations.html',
-        param_general: 'param_general.html',
-        param_bloque: 'param_bloque.html',
-        param_archive: 'param_archive.html'
-      };
-      const file = map[keyFromHash] || 'dashboard.html';
-      loadPage(file, keyFromHash || 'dashboard', false);
+      })();
     })();
-
-    // notifications & user dropdown (inchangés)
-    const btnNotif = document.getElementById('btnNotif');
-    const notifPanel = document.getElementById('notifPanel');
-    const btnUser = document.getElementById('btnUser');
-    const userPanel = document.getElementById('userPanel');
-    const markAllRead = document.getElementById('markAllRead');
-
-    function togglePanel(button, panel) {
-      const isHidden = panel.classList.contains('hidden');
-      if (isHidden) { panel.classList.remove('hidden'); button.setAttribute('aria-expanded','true'); }
-      else { panel.classList.add('hidden'); button.setAttribute('aria-expanded','false'); }
-    }
-
-    btnNotif.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(btnNotif, notifPanel); userPanel.classList.add('hidden'); btnUser.setAttribute('aria-expanded','false'); });
-    btnUser.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(btnUser, userPanel); notifPanel.classList.add('hidden'); btnNotif.setAttribute('aria-expanded','false'); });
-
-    document.addEventListener('click', (e) => {
-      if (notifPanel && !notifPanel.contains(e.target) && !btnNotif.contains(e.target)) { notifPanel.classList.add('hidden'); btnNotif.setAttribute('aria-expanded','false'); }
-      if (userPanel && !userPanel.contains(e.target) && !btnUser.contains(e.target)) { userPanel.classList.add('hidden'); btnUser.setAttribute('aria-expanded','false'); }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { if (notifPanel) notifPanel.classList.add('hidden'); if (userPanel) userPanel.classList.add('hidden'); btnNotif.setAttribute('aria-expanded','false'); btnUser.setAttribute('aria-expanded','false'); }
-    });
-
-    markAllRead.addEventListener('click', (e) => { e.stopPropagation(); const b = document.getElementById('notifBadge'); if (b) b.remove(); document.querySelectorAll('#notifList > div').forEach(d => d.classList.add('opacity-60')); });
-
-    // change pass modal and logout simplified (as before)
-    const modal = document.getElementById('modalChangePass');
-    const openChangePass = document.getElementById('openChangePass');
-    const closeModal = document.getElementById('closeModal');
-    const formChangePass = document.getElementById('formChangePass');
-    const passMsg = document.getElementById('passMsg');
-    const logoutBtn = document.getElementById('logoutBtn');
-
-    if (openChangePass) openChangePass.addEventListener('click', (e) => { e.stopPropagation(); modal.classList.remove('hidden'); userPanel.classList.add('hidden'); btnUser.setAttribute('aria-expanded','false'); });
-    if (closeModal) closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-    if (formChangePass) formChangePass.addEventListener('submit', (e) => { e.preventDefault(); const fd = new FormData(formChangePass); if (fd.get('newpass') !== fd.get('confirm')) { alert('Les nouveaux mots de passe ne correspondent pas.'); return; } passMsg.classList.remove('hidden'); setTimeout(()=>{ passMsg.classList.add('hidden'); modal.classList.add('hidden'); formChangePass.reset(); },1400); });
-    if (logoutBtn) logoutBtn.addEventListener('click', () => { if (!confirm('Déconnexion ?')) return; alert('Déconnecté (demo).'); });
-
-  })();
-
-
-
-
-
   </script>
-
-  <!-- NOTE: Conserve dashboard.html, utilisateurs.html, cotisations.html et fichiers param_* à la racine. -->
 </body>
 </html>

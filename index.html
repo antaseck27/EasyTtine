@@ -44,7 +44,10 @@
                  class="rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-700 w-2/3 md:w-1/3" />
 
           <div class="flex items-center justify-between w-2/3 md:w-1/3">
-            <a id="forgotLink" href="#" class="text-sm text-gray-600">Mot de passe oublié?</a>
+            <!-- <a id="forgotLink" href="#" class="text-sm text-gray-600">Mot de passe oublié?</a> -->
+            <button id="forgotPass" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-blue-600">
+              Mot de passe oublié ?
+            </button>
             <a id="inscriptionLink" href="./Composant-Admin/inscription.html" class="text-sm text-green-600">Inscription</a>
           </div>
 
@@ -73,5 +76,13 @@
 
 <!-- main.js est de type module et importe firebase-init.js -->
 <script type="module" src="./main.js"></script>
+<script type="module">
+  import { resetPassword } from "/composant-Admin/auth.js";
+
+  document.getElementById("forgotPass").addEventListener("click", () => {
+    const email = prompt("Entrez votre email :");
+    if (email) resetPassword(email);
+  });
+</script>
 </body>
 </html>

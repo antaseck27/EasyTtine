@@ -112,7 +112,7 @@
         </div>
       </div>
 
-      <div class="relative">
+      <!-- <div class="relative">
         <button id="btnUser" class="flex items-center gap-3 px-2 py-1 rounded hover:bg-gray-100" aria-haspopup="true" aria-expanded="false" aria-controls="userPanel">
           <div class="hidden sm:block text-sm text-gray-600">COLLE FALL</div>
           <img id="profileImg" src="/img/img2.jpg" alt="profil" class="w-12 h-12 rounded-full" />
@@ -121,13 +121,32 @@
         <div id="userPanel" class="hidden dropdown-panel absolute right-0 mt-2 bg-white border rounded shadow-lg overflow-hidden">
           <div class="p-3 border-b"><div class="font-semibold">Faly SECK</div><div class="text-xs text-gray-500">Admin</div></div>
           <div class="p-2">
-            <button id="openProfileFromDropdown" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Profil</button>
-            <button id="openChangePass" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Changer mot de passe</button>
-            <!-- <button id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600">Se déconnecter</button> -->
+             <button id="openProfileFromDropdown" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Profil</button>
+            <button id="openChangePass" class="w-full text-left px-3 py-2 rounded hover:bg-gray-50">Changer mot de passe</button> -->
+            <!-- <button id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600">Se déconnecter</button> 
+            <a id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" href="/index.html">Se déconnecter</a>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="relative">
+        <button id="btnUser" class="flex items-center gap-3 px-2 py-1 rounded hover:bg-gray-100" aria-haspopup="true" aria-expanded="false" aria-controls="userPanel">
+          <!-- Ce texte sera remplacé dynamiquement -->
+          <div id="userNameNav" class="hidden sm:block text-sm text-gray-600">Utilisateur</div>
+          <img id="profileImg" src="/img/img2.jpg" alt="profil" class="w-12 h-12 rounded-full" />
+        </button>
+      
+        <div id="userPanel" class="hidden dropdown-panel absolute right-0 mt-2 bg-white border rounded shadow-lg overflow-hidden">
+          <div class="p-3 border-b">
+            <div id="userFullName" class="font-semibold">Nom Prénom</div>
+            <div id="userRole" class="text-xs text-gray-500">Rôle</div>
+          </div>
+          <div class="p-2">
             <a id="logoutBtn" class="w-full text-left px-3 py-2 mt-1 rounded hover:bg-gray-50 text-red-600" href="/index.html">Se déconnecter</a>
           </div>
         </div>
       </div>
+      
     </div>
   </header>
 
@@ -159,6 +178,7 @@
     </div>
   </div>
 
+  <script type="module" src="user.js"></script>
   <!-- Shell JS (SPA + accordéon profil + dropdowns) -->
   <script>
   (function () {

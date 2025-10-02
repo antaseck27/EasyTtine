@@ -162,12 +162,12 @@ export async function loadCotisations() {
       const montantMensuel = data.montantMensuel || 0;
 
       const cotisationsParMois = {
-        "Sept 2024": 20,
-        "Oct 2024": 14,
-        "Nov 2024": 0,
-        "Déc 2024": 0,
-        "Janv 2025": 0,
-        "Fév 2025": 0
+        "Sept 2025": 20,
+        "Oct 2025": 14,
+        "Nov 2025": 0,
+        "Déc 2025": 0,
+        "Janv 2026": 0,
+        "Fév 2026": 0
       };
 
       const mois = Object.keys(cotisationsParMois);
@@ -175,9 +175,9 @@ export async function loadCotisations() {
 
       // ✅ Cards
       document.getElementById("juinMontant").innerText =
-        (cotisationsParMois["Sept 2024"] * montantMensuel).toLocaleString() + " FCFA";
+        (cotisationsParMois["Sept 2025"] * montantMensuel).toLocaleString() + " FCFA";
       document.getElementById("maiMontant").innerText =
-        (cotisationsParMois["Oct 2024"] * montantMensuel).toLocaleString() + " FCFA";
+        (cotisationsParMois["Oct 2025"] * montantMensuel).toLocaleString() + " FCFA";
       const caisse = dataMensuelle.reduce((a, b) => a + b, 0);
       document.getElementById("caisseMontant").innerText = caisse.toLocaleString() + " FCFA";
 
@@ -210,7 +210,7 @@ export async function loadCotisations() {
       // 📊 Doughnut Chart
       const doughEl = document.getElementById("doughnutChart");
       if (doughEl) {
-        const enCours = cotisationsParMois["Sept 2024"] + cotisationsParMois["Oct 2024"];
+        const enCours = cotisationsParMois["Sept 2025"] + cotisationsParMois["Oct 2025"];
         const bloque = 6;
         const archive = 0;
         const termine = 0;
