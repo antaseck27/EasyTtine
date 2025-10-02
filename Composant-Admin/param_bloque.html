@@ -1,12 +1,13 @@
-<section class="sectionArchives w-full">
+<body>
+  <section class="sectionArchives w-full">
   <!-- Titre -->
   <div class="p-5"><h2 class="text-2xl font-bold">Membres Bloqués</h2></div>
 
-  <h4 class="text-center text-2xl font-bold">6 Membres Bloqués</h4>
+  <h4 class="text-center text-2xl font-bold">4 Membres Bloqués</h4>
 
   <!-- Tableau -->
-  <div class="overflow-x-auto mt-3 p-5">
-    <table class="w-1/2 m-auto">
+  <div class="overflow-x-auto mt-3 p-5" style="font-size: 16px;">
+    <table class="w-2/3 m-auto">
       <thead class="bg-green-400">
         <tr>
           <th class="px-4 py-2 font-semibold">Membres</th>
@@ -32,15 +33,46 @@
     </table>
   </div>
 
-  <!-- Pagination -->
-  <div class="flex justify-center items-center gap-3 mt-5 pb-5">
-    <a href="#" class="text-gray-500 hover:underline">Previous page</a>
-    <div class="flex gap-2">
-      <span class="bg-green-500 text-white rounded-full px-3 py-1">1</span>
-      <span class="px-3 py-1">2</span>
-    </div>
-    <a href="#" id="nextPage" class="text-gray-800 font-semibold hover:underline">Next page</a>
-  </div>
-</section>
 
-<script src="paraBloquer.js"></script>
+</section>
+</body>
+
+<script type="module" defer>
+  let personne =[
+        {membre:"Idrissa Gnigue", DateDebut:"2025-09-29",},
+        {membre:"Anta Seck", DateDebut:"2025-09-29",},
+        {membre:"Gnilane Faye", DateDebut:"2025-09-29",},
+        {membre:"Sadio Sene", DateDebut:"2025-09-29",},
+    ]
+
+    let tableBody = document.getElementById("tBody");
+
+    personne.map((index) => {
+        let creatElement = 
+        `
+             <tr>
+                <td>${index.membre}</td>
+                <td>${index.DateDebut}</td>
+                <td class="d-flex gap-4">
+                   <i class="bi bi-eye voire" ></i>
+                   <i class="bi bi-slash-circle bloquer"></i>
+                </td>
+             </tr>        
+        `;
+        tableBody.innerHTML += creatElement;
+    })
+
+    let voire = document.querySelectorAll(".voire");
+    let archiver = document.querySelectorAll(".bloquer");
+
+    
+
+    for(let v = 0; v < voire.length; v++){
+        let icone = voire[v];
+        icone.addEventListener("click", ()=> {
+            let td = icone.parentNode;
+            let tr = td.parentNode;
+            alert(tr.textContent)
+        })
+    }
+</script>

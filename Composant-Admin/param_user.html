@@ -1,108 +1,346 @@
+<style> 
+  .section-utilisateur ul li:hover{
+  background-color: #093545;
+  border-left: 4px solid rgb(0, 224, 149);
+  transition: 0.5s ease-in;
+  width: 100%;
+  padding: 4%;
+  color: aliceblue;
+  }
+</style> 
+
 <section class="section-utilisateur">
-    <!-- Titre -->
-    <div class="p-5">
-      <h2 class="text-2xl font-bold">Utilisateur</h2>
-    </div>
-  
-    <div class="flex flex-col lg:flex-row gap-5 mt-5">
-      <!-- Liste des membres -->
-      <div class="lg:w-1/5 md:w-2/5 sm:w-1/3 border-r-4 pr-4">
-        <strong class="pl-4 text-lg">Membres</strong>
-        <ul class="mt-5 flex flex-col gap-8">
-          <li><a href="#" class="px-6" id="donnesSelena">Sene sadio</a></li>
-          <li><a href="#" class="px-6" id="donnesEmmaWatson">Emma Watson</a></li>
-          <li><a href="#" class="px-6" id="donnesJhon">Jhon Robert</a></li>
-          <li><a href="#" class="px-6" id="donnesAnne">Anne Hathaway</a></li>
-          <li><a href="#" class="px-6" id="donnesRavi">Ravi Shankar</a></li>
-          <li><a href="#" class="px-6" id="donnesEmmaStone">Emma Stone</a></li>
-          <li><a href="#" class="px-6" id="donnesFloyd">Floyd Miles</a></li>
-          <li><a href="#" class="px-6" id="donnesJane">Jane Cooper</a></li>
-        </ul>
-      </div>
-  
-      <!-- Formulaire -->
-      <div style="width: 60%;">
-        <h4 class="pl-5 text-xl font-semibold">Informations Générales</h4>
-  
-        <div class="flex flex-col md:flex-row justify-center mt-5 gap-6">
-          <!-- Colonne gauche -->
-          <div class="flex flex-col gap-3 w-full md:w-1/2">
-            <label class="font-medium">Nom</label>
-            <input type="text" id="inputNom" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-             
-  
-            <label class="font-medium">Date de naissance</label>
-            <input type="date" id="inputNaissance" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Définir mot de passe</label>
-            <input type="password" id="inputDmot2passe" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black ">
-              
-  
-            <label class="font-medium">E-mail</label>
-            <input type="email" id="inputMail" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Adresse</label>
-            <input type="text" id="inputAdresse" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-          </div>
-  
-          <!-- Colonne droite -->
-          <div class="flex flex-col gap-3 w-full md:w-1/2">
-            <label class="font-medium">Prénom</label>
-            <input type="text" id="inputPrenom" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Profession</label>
-            <input type="text" id="inputProfession" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Confirmer votre mot de passe</label>
-            <input type="password" id="inputCmot2passe" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Téléphone</label>
-            <input type="text" id="inputTelephone" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-              
-  
-            <label class="font-medium">Organisation</label>
-            <input type="text" id="inputOrganisation" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
-             
-          </div>
-        </div>
-  
-        <!-- Bouton -->
-        <div class="text-end mt-5 pr-5">
-          <button style="background-color: #093545;" class="text-white pe-5 ps-5 pt-1 pb-1 rounded-md shadow-lg">
-            Mettre à jour
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <section class="sectionPageSuivant pl-2 pb-5 mt-6">
-    <div class="flex items-center gap-3">
-  
-  <!-- Bouton précédent -->
-      <button id="btninArrier" class="px-2 py-1 rounded hover:bg-gray-200 transition"><i class="bi bi-chevron-left"></i></button>
-      
-  <!-- Pages -->
-      <button id="page1" class="px-2 py-1 rounded-xl font-semibold hover:bg-gray-200 transition">1</button>
+<!-- Titre -->
+<div class="p-5">
+<h2 class="text-2xl font-bold">Utilisateur</h2>
+</div>
+
+<div class="flex flex-col lg:flex-row gap-5 mt-5">
+<!-- Liste des membres -->
+<!-- Liste 1 -->
+<div class="lg:w-1/5 md:w-2/5 sm:w-1/3 border-r-4 pr-4 liste-1">
+  <strong class="pl-4 text-lg">Membres</strong>
+  <ul class="mt-5 flex flex-col gap-8 text-sm">
+    <li><a href="#" class="px-6" id="donnesAhmedCisse">Ahmed Cisse</a></li>
+    <li><a href="#" class="px-6" id="donnesNdeyeFatou">Ndeye Fatou</a></li>
+    <li><a href="#" class="px-6" id="donnesNogayeNdao">Nogaye Ndao</a></li>
+    <li><a href="#" class="px-6" id="donnesColleFall">Colle Fall</a></li>
+    <li><a href="#" class="px-6" id="donnesAntaSeck">Anta Seck</a></li>
+    <li><a href="#" class="px-6" id="donnesAssaneNdong">Assane Ndong</a></li>
+    <li><a href="#" class="px-6" id="donnesAmadouNdiaye">Amadou Ndiaye</a></li>
+    <li><a href="#" class="px-6" id="donnesBinetaMangua">Bineta Mangua</a></li>
+  </ul>
+</div>
+
+<!-- Liste 2 -->
+<div class="lg:w-1/5 md:w-2/5 sm:w-1/3 border-r-4 pr-4 liste-2" style="display: none;">
+  <strong class="pl-4 text-lg">Membres</strong>
+  <ul class="mt-5 flex flex-col gap-8 text-sm">
+    <li><a href="#" class="px-6" id="donnesArameDiouf">Arame Diouf</a></li>
+    <li><a href="#" class="px-6" id="donnesMouhamedNiang">Mouhamed Niang</a></li>
+    <li><a href="#" class="px-6" id="donnesAmyFall">Amy Fall</a></li>
+    <li><a href="#" class="px-6" id="donnesNdeyeNdoye">Ndeye Ndoye</a></li>
+    <li><a href="#" class="px-6" id="donnesNdeyeNiang">Ndeye Niang</a></li>
+    <li><a href="#" class="px-6" id="donnesNdiemeDiaw">Ndieme Diaw</a></li>
+    <li><a href="#" class="px-6" id="donnesSaliouMbengue">Saliou Mbengue</a></li>
+    <li><a href="#" class="px-6" id="donnesGningIdrissa">Gning Idrissa</a></li>
+  </ul>
+</div>
+
+<!-- Formulaire -->
+<div style="width: 60%;">
+  <h4 class="pl-5 text-xl font-semibold">Informations Générales</h4>
+
+  <div class="flex flex-col md:flex-row justify-center mt-5 gap-6 text-sm">
+    <!-- Colonne gauche -->
+    <div class="flex flex-col gap-3 w-full md:w-1/2">
+      <label class="font-medium">Nom</label>
+      <input type="text" id="inputNom" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
        
-      <button id="page2" class="px-2 py-1 rounded-xl hover:bg-gray-200 transition">2</button>
-       
-      <button id="page3" class="px-2 py-1 rounded-xl hover:bg-gray-200 transition">3</button>
-      
-      <button id="page4" class="px-2 py-1 rounded-xl hover:bg-gray-200 transition">4</button>
+
+      <label class="font-medium">Date de naissance</label>
+      <input type="date" id="inputNaissance" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
         
-  <!-- Bouton suivant -->
-      <button id="btnSuivant" class="px-2 py-1 rounded hover:bg-gray-200 transition"><i class="bi bi-chevron-right"></i></button>
+
+      <label class="font-medium">Définir mot de passe</label>
+      <input type="password" id="inputDmot2passe" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black ">
+        
+
+      <label class="font-medium">E-mail</label>
+      <input type="email" id="inputMail" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+        
+
+      <label class="font-medium">Adresse</label>
+      <input type="text" id="inputAdresse" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
         
     </div>
-  </section>
+
+    <!-- Colonne droite -->
+    <div class="flex flex-col gap-3 w-full md:w-1/2">
+      <label class="font-medium">Prénom</label>
+      <input type="text" id="inputPrenom" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+        
+
+      <label class="font-medium">Profession</label>
+      <input type="text" id="inputProfession" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+        
+
+      <label class="font-medium">Confirmer votre mot de passe</label>
+      <input type="password" id="inputCmot2passe" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+        
+
+      <label class="font-medium">Téléphone</label>
+      <input type="text" id="inputTelephone" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+        
+
+      <label class="font-medium">Organisation</label>
+      <input type="text" id="inputOrganisation" class="border rounded-md px-3 py-2 focus:outline-none h-7 border-black">
+       
+    </div>
+  </div>
+
+  <!-- Bouton -->
+  <div class="text-end mt-5 pr-5">
+    <button style="background-color: #093545;" class="text-white pe-5 ps-5 pt-1 pb-1 rounded-md shadow-lg">
+      Mettre à jour
+    </button>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="sectionPageSuivant pl-2 pb-5 mt-6">
+<div class="flex items-center gap-3">
+
+<!-- Bouton précédent -->
+<button id="btninArrier" class="px-2 py-1 rounded hover:bg-gray-200 transition"><i class="bi bi-chevron-left"></i></button>
+
+<!-- Pages -->
+<button id="page1" class="px-2 py-1 rounded-xl font-semibold hover:bg-gray-200 transition">1</button>
+ 
+<button id="page2" class="px-2 py-1 rounded-xl hover:bg-gray-200 transition">2</button>
+ 
+
   
+<!-- Bouton suivant -->
+<button id="btnSuivant" class="px-2 py-1 rounded hover:bg-gray-200 transition"><i class="bi bi-chevron-right"></i></button>
   
-  </body>
-  </html>
+</div>
+</section>
+</body>
+
+
+<script type="module">
+
+  let membres = {
+    // Liste 1
+    donnesAhmedCisse: {
+      nom: "Cisse",
+      prenom: "Ahmed",
+      naissance: "1990-05-15",
+      mail: "ahmet123@gmail.com",
+      adresse: "Dakar",
+      profession: "etudiant",
+      telephone: "768903423",
+      organisation: "Bakeli"
+    },
+    donnesNdeyeFatou: {
+      nom: "Fatou",
+      prenom: "Ndeye",
+      naissance: "1992-03-12",
+      mail: "ndeyefatou12@gmail.com",
+      adresse: "Yoff",
+      profession: "Etudiante",
+      telephone: "765433456",
+      organisation: "Bakeli"
+    },
+    donnesNogayeNdao: {
+      nom: "Ndao",
+      prenom: "Nogaye",
+      naissance: "1995-09-22",
+      mail: "nogayendao112@gmail.com",
+      adresse: "Parcellle",
+      profession: "Étudiante",
+      telephone: "776544567",
+      organisation: "Bakeli"
+    },
+    donnesColleFall: {
+      nom: "Fall",
+      prenom: "Colle",
+      naissance: "1994-01-30",
+      mail: "collefall118@gmail.com",
+      adresse: "Dakar",
+      profession: "Etidiante",
+      telephone: "776543223",
+      organisation: "Bakeli"
+    },
+    donnesAntaSeck: {
+      nom: "Seck",
+      prenom: "Anta",
+      naissance: "1991-07-19",
+      mail: "antaseck12@gmail.com",
+      adresse: "Dakar",
+      profession: "Etudiante",
+      telephone: "776543223",
+      organisation: "Bakeli"
+    },
+    donnesAssaneNdong: {
+      nom: "Ndong",
+      prenom: "Assane",
+      naissance: "1996-11-05",
+      mail: "assanendong@gmail.com",
+      adresse: "Dakar",
+      profession: "Etudiant",
+      telephone: "776543212",
+      organisation: "Bakeli"
+    },
+    donnesAmadouNdiaye: {
+      nom: "Ndiaye",
+      prenom: "Amadou",
+      naissance: "1989-12-10",
+      mail: "776543212",
+      adresse: "Dakar",
+      profession: "Etudiant",
+      telephone: "776543212",
+      organisation: "Bakeli"
+    },
+    donnesBinetaMangua: {
+      nom: "Mangua",
+      prenom: "Bineta",
+      naissance: "1998-04-08",
+      mail: "binetamangua@gmail.com",
+      adresse: "Grand yoff",
+      profession: "Étudiante",
+      telephone: "776544567",
+      organisation: "Bakeli"
+    },
+
+  // ligne 2
+    donnesArameDiouf: {
+      nom: "Diouf",
+      prenom: "Arame",
+      naissance: "1990-05-15",
+      mail: "aramediouf@gmail.com",
+      adresse: "Thies",
+      profession: "Etudiante",
+      telephone: "778764534",
+      organisation: "Bakeli"
+    },
+    donnesMouhamedNiang: {
+      nom: "Niang",
+      prenom: "Mouhamed",
+      naissance: "1992-03-12",
+      mail: "niangmouhamed@gmail.com",
+      adresse: "Saint-Louis",
+      profession: "Etudiant",
+      telephone: "776544567",
+      organisation: "Bakeli"
+    },
+    donnesAmyFall: {
+      nom: "Fall",
+      prenom: "Amy",
+      naissance: "1995-09-22",
+      mail: "fallamy12@gmail.com",
+      adresse: "Yoff",
+      profession: "Étudiante",
+      telephone: "765433421",
+      organisation: "Bakeli"
+    },
+    donnesNdeyeNdoye: {
+      nom: "Ndoye",
+      prenom: "Ndeye",
+      naissance: "1994-01-30",
+      mail: "ndeyendoye123@gmail.com",
+      adresse: "Yoff",
+      profession: "Commercante",
+      telephone: "778909876",
+      organisation: "Sonatel"
+    },
+    donnesNdeyeNiang: {
+      nom: "Niang",
+      prenom: "Ndeye",
+      naissance: "1991-07-19",
+      mail: "niangndeye13@gmail.com",
+      adresse: "Dakar",
+      profession: "Etudiante",
+      telephone: "765433212",
+      organisation: "Bakeli"
+    },
+    donnesNdiemeDiaw: {
+      nom: "Diaw",
+      prenom: "Ndieme",
+      naissance: "1996-11-05",
+      mail: "ndiemediaw@gmail.com",
+      adresse: "Guel-Tape",
+      profession: "Etudiante",
+      telephone: "765433221",
+      organisation: "Bakeli"
+    },
+  donnesSaliouMbengue: {
+      nom: "Mbengue",
+      prenom: "Saliou",
+      naissance: "1989-12-10",
+      mail: "mbenguesaliou2@gmail.com",
+      adresse: "Dakar",
+      profession: "Chauffeur",
+      telephone: "777654323",
+      organisation: "Bakeli"
+    },
+    donnesGningIdrissa: {
+      nom: "Gning",
+      prenom: "Idrissa",
+      naissance: "1998-04-08",
+      mail: "idrissaguingue826@gmail.com",
+      adresse: "Hlm grand yoff",
+      profession: "Étudiant",
+      telephone: "778907654",
+      organisation: "Bakeli"
+    }
+  };
+
+  // =========================
+  // Récupérer tous les liens de la liste
+  // =========================
+  let liens = document.querySelectorAll(".liste-1 a, .liste-2 a");
+
+  liens.forEach(lien => {
+    lien.addEventListener("click", (e) => {
+      e.preventDefault();
+      let id = lien.id; // ex: donnesSelena
+      let data = membres[id];
+
+      if (data) {
+        // Remplir le formulaire
+        document.getElementById("inputNom").value = data.nom;
+        document.getElementById("inputPrenom").value = data.prenom;
+        document.getElementById("inputNaissance").value = data.naissance;
+        document.getElementById("inputMail").value = data.mail;
+        document.getElementById("inputAdresse").value = data.adresse;
+        document.getElementById("inputProfession").value = data.profession;
+        document.getElementById("inputTelephone").value = data.telephone;
+        document.getElementById("inputOrganisation").value = data.organisation;
+      }
+    });
+  });
+
+  // =========================
+  // Pagination : changer liste
+  // =========================
+  let liste1 = document.querySelector(".liste-1");
+  let liste2 = document.querySelector(".liste-2");
+
+  document.getElementById("page1").addEventListener("click", () => {
+    liste1.style.display = "block";
+    liste2.style.display = "none";
+  });
+
+  document.getElementById("page2").addEventListener("click", () => {
+    liste1.style.display = "none";
+    liste2.style.display = "block";
+  });
+
+  // Par défaut : afficher liste-1 et cacher liste-2
+  liste1.style.display = "block";
+  liste2.style.display = "none";
+
+</script>
